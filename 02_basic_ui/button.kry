@@ -5,10 +5,17 @@ style "base" {
     border_width: 1
 }
 
+script lua "button_handlers" {
+    function handleButtonClick()
+        print("🎯 Button clicked! Hello from Lua script!")
+        print("This demonstrates Kryon's Lua integration working perfectly.")
+    end
+}
+
 App {
     window_width: 600
     window_height: 400
-    window_title: "Centered Button"
+    window_title: "Interactive Button Demo"
     resizable: true
     keep_aspect_ratio: false 
     layout: center

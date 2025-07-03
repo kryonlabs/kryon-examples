@@ -1,190 +1,114 @@
-# Kryon Renderer Examples
+# KryonLabs Examples
 
-This directory contains comprehensive examples that serve as both documentation and demonstrations of Kryon's capabilities.
+Welcome to the KryonLabs examples collection! These examples are organized by complexity and topic to help you learn the framework progressively.
 
-## Structure
+## 📁 Directory Structure
 
-### Fundamentals
-- `fundamentals/` - Basic concepts and getting started
-  - `hello_world.kry` - Your first Kryon app
-  - `image.kry` - Displaying images
+### 🚀 [01_getting_started/](01_getting_started/)
+Your first steps with KryonLabs - basic app structure and simple rendering.
 
-### UI Elements  
-- `ui-elements/` - Complete showcase of all UI components
-  - `text_demo.kry` - Text elements with all properties
-  - `button_showcase.kry` - Button types, states, and interactions
-  - `button.kry` - Simple button example
+### 🎛️ [02_basic_ui/](02_basic_ui/) 
+Fundamental UI elements like buttons, text, and basic interactions.
 
-### Layout System
-- `layout/` - Layout and positioning demonstrations  
-  - `flexbox_guide.kry` - Complete flexbox layout guide
+### 📐 [03_layouts/](03_layouts/)
+Layout systems including flexbox, centering, and responsive design.
 
-### Styling
-- `styling/` - Colors, themes, and visual design
+### 🎨 [04_styling/](04_styling/)
+CSS-like styling, themes, colors, and visual design patterns.
 
-### Advanced Features
-- `advanced/` - Complex examples combining multiple features
-  - `calculator.kry` - Interactive calculator app
-  - `tab_bar.kry` - Tabbed interface component
-  - `markdown.kry` - Markdown rendering example
+### 🖱️ [05_interactions/](05_interactions/)
+User input handling, events, and interactive behaviors.
 
-## Running Examples
+### 🎬 [06_multimedia/](06_multimedia/)
+Images, media, animations, and graphics primitives.
 
-### New Unified CLI (Recommended)
+### 🔧 [07_advanced/](07_advanced/)
+Complex applications with advanced patterns and multi-script integration.
 
-The new CLI requires you to specify which renderer backend to use:
+### 🎮 [98_demos/](98_demos/)
+Complete, polished applications showcasing KryonLabs capabilities.
 
-```bash
-# GPU-accelerated desktop rendering
-cargo run --bin kryon-renderer wgpu examples/fundamentals/hello_world.krb
+### 🧪 [99_tests/](99_tests/)
+Testing examples and validation scenarios.
 
-# Terminal UI rendering  
-cargo run --bin kryon-renderer ratatui examples/fundamentals/hello_world.krb
+## 🚀 Quick Start
 
-# Simple graphics rendering
-cargo run --bin kryon-renderer raylib examples/fundamentals/hello_world.krb
+1. **Compile an example:**
+   ```bash
+   cargo run --bin kryon-compiler -- examples/01_getting_started/hello_world.kry examples/01_getting_started/hello_world.krb
+   ```
 
-# Debug mode - clean terminal node tree (no UI)
-cargo run --bin kryon-renderer debug examples/fundamentals/hello_world.krb
-```
+2. **Run with your preferred backend:**
+   ```bash
+   # GPU-accelerated (recommended for desktop)
+   cargo run --bin kryon-renderer-raylib examples/01_getting_started/hello_world.krb
+   
+   # Terminal-based (great for testing)
+   cargo run --bin kryon-renderer-ratatui examples/01_getting_started/hello_world.krb
+   ```
 
-### Debug Mode Features
+3. **Try the interactive button:**
+   ```bash
+   cargo run --bin kryon-compiler -- examples/02_basic_ui/button.kry examples/02_basic_ui/button.krb
+   cargo run --bin kryon-renderer-raylib examples/02_basic_ui/button.krb
+   # Click the button and watch the console output!
+   ```
 
-The debug renderer outputs a clean terminal hierarchy without rendering UI:
+## 📖 Learning Path
 
-```bash
-# Basic tree view
-cargo run --bin kryon-renderer debug examples/ui-elements/text_demo.krb
+**Beginner:** Start with `01_getting_started` → `02_basic_ui` → `03_layouts`
 
-# Show layout information  
-cargo run --bin kryon-renderer debug examples/layout/flexbox_guide.krb --show-layout
+**Intermediate:** Explore `04_styling` → `05_interactions` → `06_multimedia`
 
-# Show all properties
-cargo run --bin kryon-renderer debug examples/ui-elements/button_showcase.krb --show-properties
+**Advanced:** Dive into `07_advanced` and study `98_demos`
 
-# Show colors in hex format
-cargo run --bin kryon-renderer debug examples/styling/color_demo.krb --show-colors
+## 🎯 Featured Examples
 
-# Complete analysis with all options
-cargo run --bin kryon-renderer debug examples/advanced/calculator.krb --show-layout --show-properties --show-colors
-```
+- **Interactive Button** (`02_basic_ui/button.kry`) - Demonstrates Lua script integration with console output
+- **Hello World** (`01_getting_started/hello_world.kry`) - Your first KryonLabs application
+- **Flexbox Guide** (`03_layouts/flexbox_guide.kry`) - Complete layout system tutorial
 
-Example debug output:
-```
-App pos:(0,0) size:(600,700) [bg:#F8F9FAFF]
-├── Container pos:(30,30) size:(540,640)
-│   ├── Text "Text Element Complete Demo" pos:(0,0) size:(540,24) [color:#212529FF]
-│   ├── Container pos:(0,54) size:(540,180) [bg:#FFFFFFFF]
-│   │   ├── Text "Font Sizes" pos:(20,20) size:(500,18) [color:#495057FF]
-│   │   ├── Text "Small text (12px)" pos:(20,43) size:(500,12)
-│   │   └── Text "Regular text (16px)" pos:(20,63) size:(500,16)
-│   └── Container pos:(0,254) size:(540,120) [bg:#FFFFFFFF]
-```
+## 🚨 Key Features Demonstrated
 
-### Direct Backend Usage
+- ✅ **Automatic hover effects** - Buttons intelligently lighten/darken on hover
+- ✅ **Multi-backend rendering** - Same code runs on GPU (Raylib) and Terminal (Ratatui)  
+- ✅ **Script integration** - Lua, JavaScript, Python, and Wren script support
+- ✅ **Responsive layouts** - Flexbox-based layout engine
+- ✅ **CSS-like styling** - Familiar styling with inheritance and pseudo-states
 
-You can still use the individual backend binaries directly:
+## 🔧 Running Examples
+
+### Backend Options
 
 ```bash
-cargo run --bin kryon-renderer-wgpu examples/fundamentals/hello_world.krb
-cargo run --bin kryon-renderer-ratatui examples/fundamentals/hello_world.krb  
-cargo run --bin kryon-renderer-raylib examples/fundamentals/hello_world.krb
-cargo run --bin kryon-renderer-debug examples/fundamentals/hello_world.krb --format tree
+# GPU-accelerated desktop rendering (Raylib)
+cargo run --bin kryon-renderer-raylib examples/02_basic_ui/button.krb
+
+# Terminal UI rendering (great for CI/testing)
+cargo run --bin kryon-renderer-ratatui examples/02_basic_ui/button.krb
+
+# Debug mode - clean terminal tree output
+cargo run --bin kryon-renderer-debug examples/02_basic_ui/button.krb
 ```
 
-## Example Categories Explained
-
-### Fundamentals
-Perfect starting point showing basic app structure and core concepts.
-
-### UI Elements
-Comprehensive documentation examples showing every property and state of each UI element type. These examples are designed to be copy-paste references.
-
-### Layout System
-Visual guides to understanding flexbox layouts, positioning, spacing, and responsive design patterns.
-
-### Styling  
-Color palettes, themes, borders, typography, and visual design systems.
-
-### Advanced Features
-Real-world examples combining multiple features - calculator apps, tabbed interfaces, data displays, and interactive components.
-
-## Writing Documentation Examples
-
-When creating new examples:
-
-1. **Be comprehensive** - Show all properties and variations
-2. **Use realistic content** - "Lorem ipsum" → "User Profile Settings"  
-3. **Visual hierarchy** - Group related elements in containers
-4. **Consistent styling** - Use standard color palettes and spacing
-5. **Descriptive titles** - "Button Showcase" not "Button Test"
-6. **Comments** - Explain complex interactions or patterns
-
-Example structure:
-```kry
-// Element Type Documentation Example (using // comments)
-# Complete demonstration of [element] capabilities (using # comments)
-
-App {
-    window_title: "[Element] Complete Demo/Showcase/Guide"
-    window_width: 600
-    window_height: 700
-    background_color: "#F8F9FAFF"
-    
-    Container {
-        layout: column start
-        padding: 30
-        gap: 25
-        
-        Text {
-            text: "[Element] Complete Demo"
-            font_size: 24
-            text_alignment: center
-            margin_bottom: 15
-        }
-        
-        // Section 1: Basic usage
-        Container {
-            layout: column start
-            background_color: "#FFFFFFFF"
-            border_radius: 8
-            padding: 20
-            gap: 12
-            
-            Text {
-                text: "Basic Usage"
-                font_size: 18
-                color: "#495057FF"
-                margin_bottom: 8
-            }
-            
-            # Examples here... (both comment styles work)
-        }
-        
-        // Section 2: Variations
-        # Section 3: States/Interactions  
-        // Section 4: Advanced usage
-    }
-}
-```
-
-## Testing Examples
-
-### Automated Testing
+### Testing All Examples
 
 ```bash
-# Test all examples compile and render correctly
+# Test compilation of all examples
 ./test_examples.sh
 
-# Test specific category
-find examples/ui-elements -name "*.kry" -exec cargo run --bin kryon-renderer debug {} \;
+# Test specific category  
+find examples/02_basic_ui -name "*.kry" -exec cargo run --bin kryon-compiler -- {} {}.krb \;
 ```
 
-### Manual Testing
+## 📝 Writing New Examples
 
-1. **Compile**: Does the .kry file compile to .krb without errors?
-2. **Debug tree**: Does the debug output show expected hierarchy?
-3. **Visual**: Does each backend render the UI correctly?
-4. **Interactive**: Do buttons, hovers, and other interactions work?
+When creating examples, follow these patterns:
 
-The debug mode is perfect for automated testing since it provides deterministic text output that can be compared against expected results.
+1. **Clear purpose** - Each example demonstrates specific features
+2. **Realistic content** - Use meaningful text and interactions
+3. **Progressive complexity** - Build on previous concepts
+4. **Comprehensive coverage** - Show all properties and states
+5. **Script integration** - Include Lua scripts for interactivity
+
+Happy coding with KryonLabs! 🎉
