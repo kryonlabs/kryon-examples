@@ -1,0 +1,307 @@
+# Button Element Documentation Example  
+// Comprehensive showcase of button types, states, and interactions
+
+App {
+    window_title: "Button Elements - Complete Showcase"
+    window_width: 650
+    window_height: 800
+    background_color: "#F8F9FAFF"
+    
+    Container {
+        layout: column start
+        padding: 30
+        gap: 25
+        
+        Text {
+            text: "Button Element Complete Showcase"
+            font_size: 24
+            text_color: "#212529FF"
+            text_alignment: center
+            margin_bottom: 15
+        }
+        
+        # Basic Button Styles
+        Container {
+            layout: column start
+            background_color: "#FFFFFFFF"
+            border_radius: 8
+            padding: 20
+            gap: 12
+            
+            Text {
+                text: "Button Styles"
+                font_size: 18
+                text_color: "#495057FF"
+                margin_bottom: 8
+            }
+            
+            Container {
+                layout: row start
+                gap: 12
+                
+                Button {
+                    text: "Primary"
+                    background_color: "#007BFFFF"
+                    text_color: "#FFFFFFFF"
+                    padding: 12
+                    border_radius: 4
+                }
+                
+                Button {
+                    text: "Secondary"
+                    background_color: "#6C757DFF"
+                    text_color: "#FFFFFFFF"
+                    padding: 12
+                    border_radius: 4
+                }
+                
+                Button {
+                    text: "Success"
+                    background_color: "#28A745FF"
+                    text_color: "#FFFFFFFF"
+                    padding: 12
+                    border_radius: 4
+                }
+                
+                Button {
+                    text: "Danger"
+                    background_color: "#DC3545FF"
+                    text_color: "#FFFFFFFF"
+                    padding: 12
+                    border_radius: 4
+                }
+            }
+        }
+        
+        // Button Sizes
+        Container {
+            layout: column start
+            background_color: "#FFFFFFFF"
+            border_radius: 8
+            padding: 20
+            gap: 12
+            
+            Text {
+                text: "Button Sizes"
+                font_size: 18
+                text_color: "#495057FF"
+                margin_bottom: 8
+            }
+            
+            Container {
+                layout: column start
+                gap: 8
+                
+                Button {
+                    text: "Small Button"
+                    background_color: "#007BFFFF"
+                    text_color: "#FFFFFFFF"
+                    padding: 6
+                    border_radius: 3
+                    font_size: 12
+                }
+                
+                Button {
+                    text: "Regular Button"
+                    background_color: "#007BFFFF"
+                    text_color: "#FFFFFFFF"
+                    padding: 12
+                    border_radius: 4
+                    font_size: 16
+                }
+                
+                Button {
+                    text: "Large Button"
+                    background_color: "#007BFFFF"
+                    text_color: "#FFFFFFFF"
+                    padding: 16
+                    border_radius: 6
+                    font_size: 18
+                }
+                
+                Button {
+                    text: "Extra Large Button"
+                    background_color: "#007BFFFF"
+                    text_color: "#FFFFFFFF"
+                    padding: 20
+                    border_radius: 8
+                    font_size: 20
+                }
+            }
+        }
+        
+        // Interactive States
+        Container {
+            layout: column start
+            background_color: "#FFFFFFFF"
+            border_radius: 8
+            padding: 20
+            gap: 12
+            
+            Text {
+                text: "Interactive States"
+                font_size: 18
+                text_color: "#495057FF"
+                margin_bottom: 8
+            }
+            
+            Container {
+                layout: row start
+                gap: 12
+                
+                Button {
+                    text: "Hover Me"
+                    background_color: "#007BFFFF"
+                    text_color: "#FFFFFFFF"
+                    padding: 12
+                    border_radius: 4
+                    
+                    :hover {
+                        background_color: "#0056B3FF"
+                        border_width: 2
+                        border_color: "#004085FF"
+                    }
+                }
+                
+                Button {
+                    text: "Click Me"
+                    background_color: "#28A745FF"
+                    text_color: "#FFFFFFFF"
+                    padding: 12
+                    border_radius: 4
+                    
+                    :active {
+                        background_color: "#1E7E34FF"
+                        padding: 10
+                    }
+                }
+                
+                Button {
+                    text: "Focus Me"
+                    background_color: "#6C757DFF"
+                    text_color: "#FFFFFFFF"
+                    padding: 12
+                    border_radius: 4
+                    
+                    :focus {
+                        border_width: 3
+                        border_color: "#007BFFFF"
+                    }
+                }
+            }
+        }
+        
+        // Outline Buttons
+        Container {
+            layout: column start
+            background_color: "#FFFFFFFF"
+            border_radius: 8
+            padding: 20
+            gap: 12
+            
+            Text {
+                text: "Outline Buttons"
+                font_size: 18
+                text_color: "#495057FF"
+                margin_bottom: 8
+            }
+            
+            Container {
+                layout: row start
+                gap: 12
+                
+                Button {
+                    text: "Primary Outline"
+                    background_color: "transparent"
+                    text_color: "#007BFFFF"
+                    border_width: 2
+                    border_color: "#007BFFFF"
+                    padding: 10
+                    border_radius: 4
+                    
+                    :hover {
+                        background_color: "#007BFFFF"
+                        text_color: "#FFFFFFFF"
+                    }
+                }
+                
+                Button {
+                    text: "Success Outline"
+                    background_color: "transparent"
+                    text_color: "#28A745FF"
+                    border_width: 2
+                    border_color: "#28A745FF"
+                    padding: 10
+                    border_radius: 4
+                    
+                    :hover {
+                        background_color: "#28A745FF"
+                        text_color: "#FFFFFFFF"
+                    }
+                }
+                
+                Button {
+                    text: "Danger Outline"
+                    background_color: "transparent"
+                    text_color: "#DC3545FF"
+                    border_width: 2
+                    border_color: "#DC3545FF"
+                    padding: 10
+                    border_radius: 4
+                    
+                    :hover {
+                        background_color: "#DC3545FF"
+                        text_color: "#FFFFFFFF"
+                    }
+                }
+            }
+        }
+        
+        // Special Buttons
+        Container {
+            layout: column start
+            background_color: "#FFFFFFFF"
+            border_radius: 8
+            padding: 20
+            gap: 12
+            
+            Text {
+                text: "Special Button Types"
+                font_size: 18
+                text_color: "#495057FF"
+                margin_bottom: 8
+            }
+            
+            Container {
+                layout: row start
+                gap: 12
+                
+                Button {
+                    text: "Rounded Button"
+                    background_color: "#E83E8CFF"
+                    text_color: "#FFFFFFFF"
+                    padding: 12
+                    border_radius: 25
+                }
+                
+                Button {
+                    text: "Square Button"
+                    background_color: "#6610F2FF"
+                    text_color: "#FFFFFFFF"
+                    padding: 12
+                    border_radius: 0
+                }
+                
+                Button {
+                    text: "Shadow Button"
+                    background_color: "#FD7E14FF"
+                    text_color: "#FFFFFFFF"
+                    padding: 12
+                    border_radius: 4
+                    border_width: 0
+                    box_shadow: "0 4px 8px rgba(0,0,0,0.1)"
+                }
+            }
+        }
+    }
+}

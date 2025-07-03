@@ -1,0 +1,439 @@
+// Layout System Documentation Example
+# Complete guide to Flexbox layouts in Kryon
+
+App {
+    window_title: "Layout System - Flexbox Complete Guide"
+    window_width: 800
+    window_height: 900
+    background_color: "#F8F9FAFF"
+    
+    Container {
+        layout: column start
+        padding: 30
+        gap: 25
+        
+        Text {
+            text: "Flexbox Layout Complete Guide"
+            font_size: 24
+            text_color: "#212529FF"
+            text_alignment: center
+            margin_bottom: 15
+        }
+        
+        # Column Layouts
+        Container {
+            layout: column start
+            background_color: "#FFFFFFFF"
+            border_radius: 8
+            padding: 20
+            gap: 15
+            
+            Text {
+                text: "Column Layouts"
+                font_size: 18
+                text_color: "#495057FF"
+                margin_bottom: 8
+            }
+            
+            Container {
+                layout: row start
+                gap: 20
+                
+                // Column Start
+                Container {
+                    layout: column start
+                    background_color: "#E3F2FDFF"
+                    border_radius: 6
+                    padding: 15
+                    width: 180
+                    height: 200
+                    gap: 8
+                    
+                    Text {
+                        text: "column start"
+                        font_size: 14
+                        text_color: "#1976D2FF"
+                        text_alignment: center
+                        margin_bottom: 5
+                    }
+                    
+                    Container {
+                        background_color: "#2196F3FF"
+                        width: 60
+                        height: 30
+                        border_radius: 4
+                    }
+                    
+                    Container {
+                        background_color: "#2196F3FF"
+                        width: 80
+                        height: 30
+                        border_radius: 4
+                    }
+                    
+                    Container {
+                        background_color: "#2196F3FF"
+                        width: 70
+                        height: 30
+                        border_radius: 4
+                    }
+                }
+                
+                // Column Center
+                Container {
+                    layout: column center
+                    background_color: "#E8F5E8FF"
+                    border_radius: 6
+                    padding: 15
+                    width: 180
+                    height: 200
+                    gap: 8
+                    
+                    Text {
+                        text: "column center"
+                        font_size: 14
+                        text_color: "#388E3CFF"
+                        text_alignment: center
+                        margin_bottom: 5
+                    }
+                    
+                    Container {
+                        background_color: "#4CAF50FF"
+                        width: 60
+                        height: 30
+                        border_radius: 4
+                    }
+                    
+                    Container {
+                        background_color: "#4CAF50FF"
+                        width: 80
+                        height: 30
+                        border_radius: 4
+                    }
+                    
+                    Container {
+                        background_color: "#4CAF50FF"
+                        width: 70
+                        height: 30
+                        border_radius: 4
+                    }
+                }
+                
+                // Column End
+                Container {
+                    layout: column end
+                    background_color: "#FFF3E0FF"
+                    border_radius: 6
+                    padding: 15
+                    width: 180
+                    height: 200
+                    gap: 8
+                    
+                    Text {
+                        text: "column end"
+                        font_size: 14
+                        text_color: "#F57C00FF"
+                        text_alignment: center
+                        margin_bottom: 5
+                    }
+                    
+                    Container {
+                        background_color: "#FF9800FF"
+                        width: 60
+                        height: 30
+                        border_radius: 4
+                    }
+                    
+                    Container {
+                        background_color: "#FF9800FF"
+                        width: 80
+                        height: 30
+                        border_radius: 4
+                    }
+                    
+                    Container {
+                        background_color: "#FF9800FF"
+                        width: 70
+                        height: 30
+                        border_radius: 4
+                    }
+                }
+            }
+        }
+        
+        // Row Layouts
+        Container {
+            layout: column start
+            background_color: "#FFFFFFFF"
+            border_radius: 8
+            padding: 20
+            gap: 15
+            
+            Text {
+                text: "Row Layouts"
+                font_size: 18
+                text_color: "#495057FF"
+                margin_bottom: 8
+            }
+            
+            Container {
+                layout: column start
+                gap: 15
+                
+                // Row Start
+                Container {
+                    layout: column start
+                    background_color: "#FCE4ECFF"
+                    border_radius: 6
+                    padding: 15
+                    gap: 8
+                    
+                    Text {
+                        text: "row start"
+                        font_size: 14
+                        text_color: "#C2185BFF"
+                        margin_bottom: 5
+                    }
+                    
+                    Container {
+                        layout: row start
+                        gap: 8
+                        
+                        Container {
+                            background_color: "#E91E63FF"
+                            width: 50
+                            height: 40
+                            border_radius: 4
+                        }
+                        
+                        Container {
+                            background_color: "#E91E63FF"
+                            width: 70
+                            height: 40
+                            border_radius: 4
+                        }
+                        
+                        Container {
+                            background_color: "#E91E63FF"
+                            width: 60
+                            height: 40
+                            border_radius: 4
+                        }
+                    }
+                }
+                
+                // Row Center
+                Container {
+                    layout: column start
+                    background_color: "#F3E5F5FF"
+                    border_radius: 6
+                    padding: 15
+                    gap: 8
+                    
+                    Text {
+                        text: "row center"
+                        font_size: 14
+                        text_color: "#7B1FA2FF"
+                        margin_bottom: 5
+                    }
+                    
+                    Container {
+                        layout: row center
+                        width: 600
+                        gap: 8
+                        
+                        Container {
+                            background_color: "#9C27B0FF"
+                            width: 50
+                            height: 40
+                            border_radius: 4
+                        }
+                        
+                        Container {
+                            background_color: "#9C27B0FF"
+                            width: 70
+                            height: 40
+                            border_radius: 4
+                        }
+                        
+                        Container {
+                            background_color: "#9C27B0FF"
+                            width: 60
+                            height: 40
+                            border_radius: 4
+                        }
+                    }
+                }
+                
+                // Row End
+                Container {
+                    layout: column start
+                    background_color: "#FFEBEEEFF"
+                    border_radius: 6
+                    padding: 15
+                    gap: 8
+                    
+                    Text {
+                        text: "row end"
+                        font_size: 14
+                        text_color: "#D32F2FFF"
+                        margin_bottom: 5
+                    }
+                    
+                    Container {
+                        layout: row end
+                        width: 600
+                        gap: 8
+                        
+                        Container {
+                            background_color: "#F44336FF"
+                            width: 50
+                            height: 40
+                            border_radius: 4
+                        }
+                        
+                        Container {
+                            background_color: "#F44336FF"
+                            width: 70
+                            height: 40
+                            border_radius: 4
+                        }
+                        
+                        Container {
+                            background_color: "#F44336FF"
+                            width: 60
+                            height: 40
+                            border_radius: 4
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Spacing and Gaps
+        Container {
+            layout: column start
+            background_color: "#FFFFFFFF"
+            border_radius: 8
+            padding: 20
+            gap: 15
+            
+            Text {
+                text: "Spacing & Gaps"
+                font_size: 18
+                text_color: "#495057FF"
+                margin_bottom: 8
+            }
+            
+            Container {
+                layout: row start
+                gap: 20
+                
+                Container {
+                    layout: column start
+                    background_color: "#F5F5F5FF"
+                    border_radius: 6
+                    padding: 15
+                    gap: 4
+                    
+                    Text {
+                        text: "gap: 4"
+                        font_size: 12
+                        margin_bottom: 5
+                    }
+                    
+                    Container {
+                        background_color: "#607D8BFF"
+                        width: 80
+                        height: 25
+                        border_radius: 3
+                    }
+                    
+                    Container {
+                        background_color: "#607D8BFF"
+                        width: 80
+                        height: 25
+                        border_radius: 3
+                    }
+                    
+                    Container {
+                        background_color: "#607D8BFF"
+                        width: 80
+                        height: 25
+                        border_radius: 3
+                    }
+                }
+                
+                Container {
+                    layout: column start
+                    background_color: "#F5F5F5FF"
+                    border_radius: 6
+                    padding: 15
+                    gap: 12
+                    
+                    Text {
+                        text: "gap: 12"
+                        font_size: 12
+                        margin_bottom: 5
+                    }
+                    
+                    Container {
+                        background_color: "#607D8BFF"
+                        width: 80
+                        height: 25
+                        border_radius: 3
+                    }
+                    
+                    Container {
+                        background_color: "#607D8BFF"
+                        width: 80
+                        height: 25
+                        border_radius: 3
+                    }
+                    
+                    Container {
+                        background_color: "#607D8BFF"
+                        width: 80
+                        height: 25
+                        border_radius: 3
+                    }
+                }
+                
+                Container {
+                    layout: column start
+                    background_color: "#F5F5F5FF"
+                    border_radius: 6
+                    padding: 15
+                    gap: 20
+                    
+                    Text {
+                        text: "gap: 20"
+                        font_size: 12
+                        margin_bottom: 5
+                    }
+                    
+                    Container {
+                        background_color: "#607D8BFF"
+                        width: 80
+                        height: 25
+                        border_radius: 3
+                    }
+                    
+                    Container {
+                        background_color: "#607D8BFF"
+                        width: 80
+                        height: 25
+                        border_radius: 3
+                    }
+                    
+                    Container {
+                        background_color: "#607D8BFF"
+                        width: 80
+                        height: 25
+                        border_radius: 3
+                    }
+                }
+            }
+        }
+    }
+}
