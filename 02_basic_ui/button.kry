@@ -5,11 +5,9 @@ style "base" {
     border_width: 1
 }
 
-script lua "button_handlers" {
-    function handleButtonClick()
-        print("🎯 Button clicked! Hello from Lua script!")
-        print("This demonstrates Kryon's Lua integration working perfectly.")
-    end
+@function "lua" handleButtonClick() {
+    print("🎯 Button clicked! Hello from Lua script!")
+    print("This demonstrates Kryon's simplified function syntax.")
 }
 
 App {
