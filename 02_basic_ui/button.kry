@@ -7,7 +7,6 @@ style "base" {
 
 @function "lua" handleButtonClick() {
     print("🎯 Button clicked! Hello from Lua script!")
-    print("This demonstrates Kryon's simplified function syntax.")
 }
 
 App {
