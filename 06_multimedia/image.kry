@@ -9,6 +9,6 @@ App {
         id: "mainLogo"
         width: 128
         height: 128
-        image_source: "kryon_image.png"
+        src: "kryon_image.png"
     }
 }
