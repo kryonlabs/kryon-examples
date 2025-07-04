@@ -1,20 +1,20 @@
 # widgets/tab_bar.kry
 
 # Style for the TabBar Container itself (Row version)
-style "tab_bar_style_base_row" {
+@style "tab_bar_style_base_row" {
     background_color: "#3E2723FF" # Dark Brown Tab Bar BG
     height: 50                    # Fixed height for the bar
     layout: row center            # Lay out children (buttons) in a row, center vertically
     # No gap needed if buttons grow to fill space
 }
 
-style "tab_bar_style_base_column" {
+@style "tab_bar_style_base_column" {
     background_color: "#3E2723FF"
     width: 80
     layout: column center
 }
 
-style "tab_item_style_base" {
+@style "tab_item_style_base" {
     background_color: "#A1887FFF"
     border_width: 0
     text_alignment: center 
@@ -24,7 +24,7 @@ style "tab_item_style_base" {
 }
 
 # Style for ACTIVE Tab Items (Buttons)
-style "tab_item_style_active_base" {
+@style "tab_item_style_active_base" {
     extends: "tab_item_style_base"  # Inherits layout:grow and height:50
 
     # --- Overrides ---

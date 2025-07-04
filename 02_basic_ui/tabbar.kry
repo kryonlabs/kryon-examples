@@ -1,0 +1,169 @@
+style "app_base" {
+    background_color: "#191919FF"
+    text_color: "#FFFFFFFF"
+    layout: column center
+}
+
+style "tab_bar_container" {
+    background_color: "#2C2C2CFF"
+    height: 50
+    layout: row center
+    border_width: 1
+    border_color: "#444444FF"
+}
+
+style "tab_button_base" {
+    background_color: "#404040FF"
+    text_color: "#CCCCCCFF"
+    text_alignment: center
+    border_width: 0
+    layout: grow
+    height: 50
+}
+
+style "tab_button_active" {
+    background_color: "#0066CCFF"
+    text_color: "#FFFFFFFF"
+    text_alignment: center
+    border_width: 0
+    layout: grow
+    height: 50
+}
+
+style "content_area" {
+    background_color: "#1E1E1EFF"
+    text_color: "#FFFFFFFF"
+    layout: grow
+    text_alignment: center
+}
+
+@variables {
+    current_tab: 0
+}
+
+@function "lua" switchTab(tabIndex) {
+    current_tab = tabIndex
+    print("🔄 Switched to tab: " .. tabIndex)
+    
+    -- Hide all content areas
+    local contentAreas = {"home_content", "profile_content", "settings_content"}
+    for i, contentId in ipairs(contentAreas) do
+        local element = getElementById(contentId)
+        if element then
+            element.visible = false
+        end
+    end
+    
+    -- Show selected content area
+    local selectedContent = contentAreas[tabIndex + 1]
+    if selectedContent then
+        local element = getElementById(selectedContent)
+        if element then
+            element.visible = true
+        end
+    end
+    
+    -- Update tab button styles
+    local tabButtons = {"tab_home", "tab_profile", "tab_settings"}
+    for i, buttonId in ipairs(tabButtons) do
+        local button = getElementById(buttonId)
+        if button then
+            if i == tabIndex + 1 then
+                button.style = "tab_button_active"
+            else
+                button.style = "tab_button_base"
+            end
+        end
+    end
+}
+
+@function "lua" onTabHome() {
+    switchTab(0)
+}
+
+@function "lua" onTabProfile() {
+    switchTab(1)
+}
+
+@function "lua" onTabSettings() {
+    switchTab(2)
+}
+
+App {
+    window_width: 800
+    window_height: 600
+    window_title: "Interactive TabBar Demo"
+    resizable: true
+    keep_aspect_ratio: false
+    layout: column
+    style: "app_base"
+
+    # Tab Bar Container
+    Container {
+        id: "tab_bar"
+        style: "tab_bar_container"
+
+        Button {
+            id: "tab_home"
+            text: "🏠 Home"
+            style: "tab_button_active"
+            onClick: "onTabHome"
+        }
+
+        Button {
+            id: "tab_profile"
+            text: "👤 Profile"
+            style: "tab_button_base"
+            onClick: "onTabProfile"
+        }
+
+        Button {
+            id: "tab_settings"
+            text: "⚙️ Settings"
+            style: "tab_button_base"
+            onClick: "onTabSettings"
+        }
+    }
+
+    # Content Area
+    Container {
+        id: "content_container"
+        style: "content_area"
+
+        # Home Content
+        Container {
+            id: "home_content"
+            visible: $current_tab == 0
+            style: "content_area"
+            
+            Text {
+                text: "🏠 Welcome to the Home tab!\n\nThis is your main dashboard where you can see an overview of your activity and recent updates."
+                text_alignment: center
+            }
+        }
+
+        # Profile Content
+        Container {
+            id: "profile_content"
+            visible: $current_tab == 1
+            style: "content_area"
+            
+            Text {
+                text: "👤 Profile Information\n\nName: John Doe\nEmail: john.doe@example.com\nRole: Developer\nJoined: January 2024"
+                text_alignment: center
+            }
+        }
+
+        # Settings Content
+        Container {
+            id: "settings_content"
+            visible: $current_tab == 2
+            style: "content_area"
+            
+            Text {
+                text: "⚙️ Application Settings\n\nTheme: Dark Mode\nLanguage: English\nNotifications: Enabled\nAuto-save: Every 5 minutes"
+                text_alignment: center
+            }
+        }
+    }
+}
