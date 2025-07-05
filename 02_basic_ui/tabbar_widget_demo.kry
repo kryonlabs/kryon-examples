@@ -1,0 +1,104 @@
+# Professional TabBar Demo using widget architecture
+# This demonstrates clean separation and reusable components
+
+@include "widgets/tabbar.kry"
+
+# Application-specific styles
+style "app_container" {
+    background_color: "#191919FF"
+    text_color: "#FFFFFFFF"
+    layout: column start
+}
+
+style "main_content" {
+    background_color: "#1E1E1EFF"
+    text_color: "#FFFFFFFF"
+    layout: grow
+    text_alignment: center
+}
+
+# Tab content panels
+style "home_panel" extends "tab_content" {
+    background_color: "#1A2332FF"
+}
+
+style "profile_panel" extends "tab_content" {
+    background_color: "#2A1F32FF"
+}
+
+style "settings_panel" extends "tab_content" {
+    background_color: "#2A3219FF"
+}
+
+App {
+    window_width: 800
+    window_height: 600
+    window_title: "Professional TabBar Widget Demo"
+    resizable: true
+    style: "app_container"
+
+    # TabBar Widget Instance
+    Container {
+        id: "main_tabbar"
+        style: "tabbar_container"
+        
+        Button {
+            id: "tab_home"
+            text: "🏠 Home"
+            style: "tab_button_active"
+        }
+
+        Button {
+            id: "tab_profile"
+            text: "👤 Profile"
+            style: "tab_button"
+        }
+
+        Button {
+            id: "tab_settings"
+            text: "⚙️ Settings"
+            style: "tab_button"
+        }
+    }
+
+    # Main Content Area
+    Container {
+        id: "content_area"
+        style: "main_content"
+
+        # Home Panel
+        Container {
+            id: "home_content"
+            style: "home_panel"
+            
+            Text {
+                text: "🏠 Welcome to Home!\n\nThis is the main dashboard with overview and recent activity."
+                text_alignment: center
+            }
+        }
+
+        # Profile Panel (initially hidden)
+        Container {
+            id: "profile_content"
+            style: "profile_panel"
+            visible: false
+            
+            Text {
+                text: "👤 User Profile\n\nName: John Doe\nEmail: john.doe@example.com\nRole: Developer"
+                text_alignment: center
+            }
+        }
+
+        # Settings Panel (initially hidden)
+        Container {
+            id: "settings_content"
+            style: "settings_panel"
+            visible: false
+            
+            Text {
+                text: "⚙️ Application Settings\n\nTheme: Dark Mode\nLanguage: English\nNotifications: Enabled"
+                text_alignment: center
+            }
+        }
+    }
+}

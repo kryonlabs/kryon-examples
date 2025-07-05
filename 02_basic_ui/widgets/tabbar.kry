@@ -1,0 +1,79 @@
+# TabBar Widget - Professional reusable component
+# Usage: @include "widgets/tabbar.kry"
+# Properties: position, width, height, tab_style, active_style, orientation
+
+@variables {
+    tab_width: 200
+    tab_height: 50
+    bar_position: "top"
+    orientation: "horizontal"
+}
+
+# Base TabBar Container Style
+style "tabbar_container" {
+    background_color: "#2C2C2CFF"
+    layout: row center
+    border_width: 1
+    border_color: "#444444FF"
+    height: $tab_height
+}
+
+# Base Tab Button Style
+style "tab_button" {
+    background_color: "#404040FF"
+    text_color: "#CCCCCCFF"
+    text_alignment: center
+    border_width: 0
+    layout: grow
+    height: $tab_height
+    width: $tab_width
+}
+
+# Active Tab Button Style
+style "tab_button_active" {
+    background_color: "#0066CCFF"
+    text_color: "#FFFFFFFF"
+    text_alignment: center
+    border_width: 0
+    layout: grow
+    height: $tab_height
+    width: $tab_width
+}
+
+# Hover state for tab buttons
+style "tab_button:hover" extends "tab_button" {
+    background_color: "#505050FF"
+}
+
+# Content area style for tab panels
+style "tab_content" {
+    background_color: "#1E1E1EFF"
+    text_color: "#FFFFFFFF"
+    layout: grow
+    text_alignment: center
+}
+
+# TabBar Component Definition
+component TabBar {
+    properties {
+        position: "top"        # top, bottom, left, right
+        width: 800            # container width
+        height: 50            # tab height
+        tab_count: 3          # number of tabs
+        active_tab: 0         # currently active tab index
+        tab_style: "tab_button"
+        active_style: "tab_button_active"
+    }
+    
+    template {
+        Container {
+            id: "tabbar_container"
+            style: "tabbar_container"
+            width: $width
+            height: $height
+            
+            # Tab buttons will be added dynamically
+            # Based on tab_count property
+        }
+    }
+}
