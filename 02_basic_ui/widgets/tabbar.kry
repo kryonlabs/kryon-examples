@@ -4,6 +4,7 @@
 Define TabBar {
     Properties {
         position: String = "top"
+        button_alignment: String = "start"
     }
     
     Container {
@@ -13,25 +14,28 @@ Define TabBar {
         Button {
             id: "tab_home"
             text: "Home"
-            style: "tab_button"
+            style: "tab_button_$position"
             checked: true
+            onClick: "tab_home_clicked"
         }
         
         Button {
             id: "tab_profile"
             text: "Profile"
-            style: "tab_button"
+            style: "tab_button_$position"
+            onClick: "tab_profile_clicked"
         }
         
         Button {
             id: "tab_settings"
             text: "Settings"
-            style: "tab_button"
+            style: "tab_button_$position"
+            onClick: "tab_settings_clicked"
         }
     }
 }
 
-# Base TabBar Container Style
+# Base TabBar Container Styles
 style "tabbar_container_top" {
     background_color: "#2C2C2CFF"
     layout: row center
@@ -64,14 +68,51 @@ style "tabbar_container_right" {
     width: 150
 }
 
-# Base Tab Button Style
-style "tab_button" {
+# Button alignment variations for vertical TabBars
+style "tabbar_container_left_center" {
+    background_color: "#2C2C2CFF"
+    layout: column center
+    border_width: 1
+    border_color: "#444444FF"
+    width: 150
+}
+
+style "tabbar_container_left_end" {
+    background_color: "#2C2C2CFF"
+    layout: column end
+    border_width: 1
+    border_color: "#444444FF"
+    width: 150
+}
+
+style "tabbar_container_right_center" {
+    background_color: "#2C2C2CFF"
+    layout: column center
+    border_width: 1
+    border_color: "#444444FF"
+    width: 150
+}
+
+style "tabbar_container_right_end" {
+    background_color: "#2C2C2CFF"
+    layout: column end
+    border_width: 1
+    border_color: "#444444FF"
+    width: 150
+}
+
+# Tab Button Styles for Different Positions
+
+# Horizontal TabBar buttons (top/bottom)
+style "tab_button_top" {
     background_color: "#404040FF"
     text_color: "#CCCCCCFF"
     text_alignment: center
     border_width: 0
     layout: grow
     height: 50
+    min_width: 80
+    padding: 10
     
     &:hover {
         background_color: "#505050FF"
@@ -83,12 +124,84 @@ style "tab_button" {
     }
 }
 
-# Content area style for tab panels
+style "tab_button_bottom" {
+    background_color: "#404040FF"
+    text_color: "#CCCCCCFF"
+    text_alignment: center
+    border_width: 0
+    layout: grow
+    height: 50
+    min_width: 80
+    padding: 10
+    
+    &:hover {
+        background_color: "#505050FF"
+    }
+    
+    &:checked {
+        background_color: "#0066CCFF"
+        text_color: "#FFFFFFFF"
+    }
+}
+
+# Vertical TabBar buttons (left/right)
+style "tab_button_left" {
+    background_color: "#404040FF"
+    text_color: "#CCCCCCFF"
+    text_alignment: center
+    border_width: 0
+    width: 120
+    height: 45
+    margin: 5
+    padding: 8
+    
+    &:hover {
+        background_color: "#505050FF"
+    }
+    
+    &:checked {
+        background_color: "#0066CCFF"
+        text_color: "#FFFFFFFF"
+    }
+}
+
+style "tab_button_right" {
+    background_color: "#404040FF"
+    text_color: "#CCCCCCFF"
+    text_alignment: center
+    border_width: 0
+    width: 120
+    height: 45
+    margin: 5
+    padding: 8
+    
+    &:hover {
+        background_color: "#505050FF"
+    }
+    
+    &:checked {
+        background_color: "#0066CCFF"
+        text_color: "#FFFFFFFF"
+    }
+}
+
+# Content area styles for tab panels - overlapping layout
 style "tab_content" {
+    background_color: "#1E1E1EFF"
+    text_color: "#FFFFFFFF"
+    text_alignment: center
+    pos_x: 0
+    pos_y: 0
+    width: 720
+    height: 500
+}
+
+style "tab_content_hidden" {
     background_color: "#1E1E1EFF"
     text_color: "#FFFFFFFF"
     layout: grow
     text_alignment: center
+    pos_x: -9999
 }
 
 # TabBar widget script logic
@@ -97,36 +210,63 @@ style "tab_content" {
         print("TabBar widget initialized")
     end
     
-    function switch_tab(tab_id, content_ids)
-        local tab_container = get_element(tab_id).parent
-        for _, child in ipairs(tab_container.children) do
-            if child.element_type == "Button" then
-                child.checked = false
+    _global_content_ids = {}
+    
+    function switch_tab(tab_id)
+        local tab_buttons = {"tab_home", "tab_profile", "tab_settings"}
+        for _, button_id in ipairs(tab_buttons) do
+            local button = getElementById(button_id)
+            if button then
+                button:setChecked(false)
             end
         end
-        get_element(tab_id).checked = true
-        for _, content_id in ipairs(content_ids) do
-            local content = get_element(content_id)
+        
+        local clicked_tab = getElementById(tab_id)
+        if clicked_tab then
+            clicked_tab:setChecked(true)
+        end
+        
+        if _global_content_ids and #_global_content_ids > 0 then
+            for _, content_id in ipairs(_global_content_ids) do
+                local content = getElementById(content_id)
+                if content then
+                    content:setVisible(false)
+                end
+            end
+        end
+        
+        local content_mapping = {
+            tab_home = "home_content",
+            tab_profile = "profile_content", 
+            tab_settings = "settings_content"
+        }
+        
+        local target_content = content_mapping[tab_id]
+        if target_content then
+            local content = getElementById(target_content)
             if content then
-                content.visible = false
+                content:setVisible(true)
             end
-        end
-        local content_id = tab_id:gsub("tab_", "") .. "_content"
-        local content = get_element(content_id)
-        if content then
-            content.visible = true
         end
     end
     
     function setup_tab_handlers(tab_ids, content_ids)
-        for _, tab_id in ipairs(tab_ids) do
-            local tab = get_element(tab_id)
-            if tab then
-                tab.onclick = function()
-                    switch_tab(tab_id, content_ids)
-                end
-            end
+        _global_content_ids = content_ids
+        if #content_ids > 0 then
+            switch_tab("tab_home")
         end
+    end
+    
+    function tab_home_clicked()
+        switch_tab("tab_home")
+    end
+    
+    function tab_profile_clicked()
+        switch_tab("tab_profile")
+    end
+    
+    function tab_settings_clicked()
+        switch_tab("tab_settings")
     end
     
     tabbar_init()

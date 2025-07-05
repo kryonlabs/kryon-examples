@@ -16,6 +16,16 @@ style "content_area" {
     text_alignment: center
 }
 
+style "content_panel" {
+    background_color: "#1E1E1EFF"
+    text_color: "#FFFFFFFF"
+    text_alignment: center
+    pos_x: 0
+    pos_y: 0
+    width: 750
+    height: 600
+}
+
 App {
     window_width: 900
     window_height: 600
@@ -27,17 +37,49 @@ App {
         position: "left"
     }
 
-    # Main content area
+    # Main content area with switchable content
     Container {
         style: "content_area"
         
-        Text {
-            text: "Main Content Area\n\nTabBar is positioned on the left as a sidebar"
-            text_alignment: center
+        # Content panels - overlapping in same space
+        Container {
+            id: "home_content"
+            style: "content_panel"
+            visible: true
+            
+            Text {
+                text: "Home Page\n\nWelcome to the home section!\nThis content is displayed when the Home tab is active."
+                text_alignment: center
+            }
+        }
+        
+        Container {
+            id: "profile_content"
+            style: "content_panel"
+            visible: false
+            
+            Text {
+                text: "Profile Page\n\nUser profile information goes here.\nThis content shows when Profile tab is selected."
+                text_alignment: center
+            }
+        }
+        
+        Container {
+            id: "settings_content"
+            style: "content_panel"
+            visible: false
+            
+            Text {
+                text: "Settings Page\n\nApplication settings and preferences.\nThis content appears when Settings tab is clicked."
+                text_alignment: center
+            }
         }
     }
 }
 
 @script "lua" {
-    create_tabbar_buttons("sidebar_tabs", "Dashboard,Analytics,Reports,Settings", "left")
+    setup_tab_handlers(
+        {"tab_home", "tab_profile", "tab_settings"}, 
+        {"home_content", "profile_content", "settings_content"}
+    )
 }

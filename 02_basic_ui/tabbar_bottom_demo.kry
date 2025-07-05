@@ -1,7 +1,7 @@
-# TabBar Bottom Position Demo
+# TabBar Bottom Position Demo  
 # Demonstrates TabBar component with bottom navigation layout
 
-@include "widgets/tabbar.kry"
+# Inline TabBar component to avoid include issues
 
 style "app_container" {
     background_color: "#191919FF"
@@ -12,32 +12,140 @@ style "app_container" {
 style "content_area" {
     background_color: "#1E1E1EFF"
     text_color: "#FFFFFFFF"
-    layout: grow
+    layout: absolute
     text_alignment: center
+    width: 900
+    height: 550
+}
+
+style "content_panel" {
+    background_color: "#1E1E1EFF"
+    text_color: "#FFFFFFFF"
+    text_alignment: center
+    pos_x: 0
+    pos_y: 0
+    width: 900
+    height: 500
 }
 
 App {
-    window_width: 800
+    window_width: 900
     window_height: 600
     window_title: "TabBar Bottom Demo"
     style: "app_container"
 
-    # Main content area
+    # Main content area with switchable content
     Container {
         style: "content_area"
         
-        Text {
-            text: "Main Content Area\n\nTabBar is positioned at the bottom like mobile navigation"
-            text_alignment: center
+        # Single content container with dynamic text
+        Container {
+            id: "home_content"
+            style: "content_panel"
+            
+            Text {
+                id: "main_text"
+                text: "Home Page\n\nWelcome to the home section!\nThis content is displayed when the Home tab is active."
+                text_alignment: center
+            }
         }
     }
 
     # Bottom navigation TabBar
-    TabBar {
-        position: "bottom"
+    Container {
+        id: "tabbar_container"
+        background_color: "#2C2C2CFF"
+        layout: row center
+        border_width: 1
+        border_color: "#444444FF"
+        height: 50
+        
+        Button {
+            id: "tab_home"
+            text: "Home"
+            background_color: "#404040FF"
+            text_color: "#CCCCCCFF"
+            text_alignment: center
+            border_width: 0
+            layout: grow
+            height: 50
+            padding: 10
+            checked: true
+            onClick: "tab_home_clicked"
+        }
+        
+        Button {
+            id: "tab_profile"
+            text: "Profile"
+            background_color: "#404040FF"
+            text_color: "#CCCCCCFF"
+            text_alignment: center
+            border_width: 0
+            layout: grow
+            height: 50
+            padding: 10
+            onClick: "tab_profile_clicked"
+        }
+        
+        Button {
+            id: "tab_settings"
+            text: "Settings"
+            background_color: "#404040FF"
+            text_color: "#CCCCCCFF"
+            text_alignment: center
+            border_width: 0
+            layout: grow
+            height: 50
+            padding: 10
+            onClick: "tab_settings_clicked"
+        }
     }
 }
 
 @script "lua" {
-    create_tabbar_buttons("bottom_nav", "Home,Search,Favorites,Profile", "bottom")
+    -- Content text for each tab
+    local content_text = {
+        ["tab_home"] = "Home Page\n\nWelcome to the home section!\nThis content is displayed when the Home tab is active.",
+        ["tab_profile"] = "Profile Page\n\nUser profile information goes here.\nThis content shows when Profile tab is selected.",
+        ["tab_settings"] = "Settings Page\n\nApplication settings and preferences.\nThis content appears when Settings tab is clicked."
+    }
+    
+    function switch_tab(tab_id)
+        -- Reset all tab buttons to unchecked
+        local tab_buttons = {"tab_home", "tab_profile", "tab_settings"}
+        for _, button_id in ipairs(tab_buttons) do
+            local button = getElementById(button_id)
+            if button then
+                button:setChecked(false)
+            end
+        end
+        
+        -- Set the clicked tab as checked
+        local clicked_tab = getElementById(tab_id)
+        if clicked_tab then
+            clicked_tab:setChecked(true)
+        end
+        
+        -- Update the content text directly
+        local text_element = getElementById("main_text")
+        if text_element and content_text[tab_id] then
+            text_element:setText(content_text[tab_id])
+        end
+    end
+    
+    -- Individual tab click handlers
+    function tab_home_clicked()
+        switch_tab("tab_home")
+    end
+    
+    function tab_profile_clicked()
+        switch_tab("tab_profile")
+    end
+    
+    function tab_settings_clicked()
+        switch_tab("tab_settings")
+    end
+    
+    -- Initialize with home content
+    switch_tab("tab_home")
 }
