@@ -1,0 +1,10 @@
+Define SimpleCard {
+    Container {
+        Text { text: "Fixed Text" }
+    }
+}
+
+App {
+    SimpleCard {
+    }
+}

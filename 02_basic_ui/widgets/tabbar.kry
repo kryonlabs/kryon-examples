@@ -1,21 +1,67 @@
-# TabBar Widget - Professional reusable component
-# Usage: @include "widgets/tabbar.kry"
-# Properties: position, width, height, tab_style, active_style, orientation
+# TabBar Component
+# Reusable tab bar component with Define syntax and custom properties
 
-@variables {
-    tab_width: 200
-    tab_height: 50
-    bar_position: "top"
-    orientation: "horizontal"
+Define TabBar {
+    Properties {
+        position: String = "top"
+    }
+    
+    Container {
+        id: "tabbar_container"
+        style: "tabbar_container_$position"
+        
+        Button {
+            id: "tab_home"
+            text: "Home"
+            style: "tab_button"
+            checked: true
+        }
+        
+        Button {
+            id: "tab_profile"
+            text: "Profile"
+            style: "tab_button"
+        }
+        
+        Button {
+            id: "tab_settings"
+            text: "Settings"
+            style: "tab_button"
+        }
+    }
 }
 
 # Base TabBar Container Style
-style "tabbar_container" {
+style "tabbar_container_top" {
     background_color: "#2C2C2CFF"
     layout: row center
     border_width: 1
     border_color: "#444444FF"
-    height: $tab_height
+    height: 50
+}
+
+style "tabbar_container_bottom" {
+    background_color: "#2C2C2CFF"
+    layout: row center
+    border_width: 1
+    border_color: "#444444FF"
+    height: 50
+}
+
+style "tabbar_container_left" {
+    background_color: "#2C2C2CFF"
+    layout: column start
+    border_width: 1
+    border_color: "#444444FF"
+    width: 150
+}
+
+style "tabbar_container_right" {
+    background_color: "#2C2C2CFF"
+    layout: column start
+    border_width: 1
+    border_color: "#444444FF"
+    width: 150
 }
 
 # Base Tab Button Style
@@ -25,24 +71,16 @@ style "tab_button" {
     text_alignment: center
     border_width: 0
     layout: grow
-    height: $tab_height
-    width: $tab_width
-}
-
-# Active Tab Button Style
-style "tab_button_active" {
-    background_color: "#0066CCFF"
-    text_color: "#FFFFFFFF"
-    text_alignment: center
-    border_width: 0
-    layout: grow
-    height: $tab_height
-    width: $tab_width
-}
-
-# Hover state for tab buttons
-style "tab_button:hover" extends "tab_button" {
-    background_color: "#505050FF"
+    height: 50
+    
+    &:hover {
+        background_color: "#505050FF"
+    }
+    
+    &:checked {
+        background_color: "#0066CCFF"
+        text_color: "#FFFFFFFF"
+    }
 }
 
 # Content area style for tab panels
@@ -53,27 +91,43 @@ style "tab_content" {
     text_alignment: center
 }
 
-# TabBar Component Definition
-component TabBar {
-    properties {
-        position: "top"        # top, bottom, left, right
-        width: 800            # container width
-        height: 50            # tab height
-        tab_count: 3          # number of tabs
-        active_tab: 0         # currently active tab index
-        tab_style: "tab_button"
-        active_style: "tab_button_active"
-    }
+# TabBar widget script logic
+@script "lua" {
+    function tabbar_init()
+        print("TabBar widget initialized")
+    end
     
-    template {
-        Container {
-            id: "tabbar_container"
-            style: "tabbar_container"
-            width: $width
-            height: $height
-            
-            # Tab buttons will be added dynamically
-            # Based on tab_count property
-        }
-    }
+    function switch_tab(tab_id, content_ids)
+        local tab_container = get_element(tab_id).parent
+        for _, child in ipairs(tab_container.children) do
+            if child.element_type == "Button" then
+                child.checked = false
+            end
+        end
+        get_element(tab_id).checked = true
+        for _, content_id in ipairs(content_ids) do
+            local content = get_element(content_id)
+            if content then
+                content.visible = false
+            end
+        end
+        local content_id = tab_id:gsub("tab_", "") .. "_content"
+        local content = get_element(content_id)
+        if content then
+            content.visible = true
+        end
+    end
+    
+    function setup_tab_handlers(tab_ids, content_ids)
+        for _, tab_id in ipairs(tab_ids) do
+            local tab = get_element(tab_id)
+            if tab then
+                tab.onclick = function()
+                    switch_tab(tab_id, content_ids)
+                end
+            end
+        end
+    end
+    
+    tabbar_init()
 }

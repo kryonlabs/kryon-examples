@@ -1,0 +1,43 @@
+# TabBar Left Position Demo
+# Demonstrates TabBar component with left sidebar layout
+
+@include "widgets/tabbar.kry"
+
+style "app_container" {
+    background_color: "#191919FF"
+    text_color: "#FFFFFFFF"
+    layout: row start
+}
+
+style "content_area" {
+    background_color: "#1E1E1EFF"
+    text_color: "#FFFFFFFF"
+    layout: grow
+    text_alignment: center
+}
+
+App {
+    window_width: 900
+    window_height: 600
+    window_title: "TabBar Left Demo"
+    style: "app_container"
+
+    # Left sidebar TabBar
+    TabBar {
+        position: "left"
+    }
+
+    # Main content area
+    Container {
+        style: "content_area"
+        
+        Text {
+            text: "Main Content Area\n\nTabBar is positioned on the left as a sidebar"
+            text_alignment: center
+        }
+    }
+}
+
+@script "lua" {
+    create_tabbar_buttons("sidebar_tabs", "Dashboard,Analytics,Reports,Settings", "left")
+}

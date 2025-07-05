@@ -1,0 +1,10 @@
+# Simple test widget
+style "test_style" {
+    background_color: "#FF0000FF"
+}
+
+@script "lua" {
+    function test_function()
+        print("test")
+    end
+}

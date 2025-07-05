@@ -1,0 +1,11 @@
+Define TestWidget {
+    Container {
+        Text { text: "Test" }
+    }
+}
+
+App {
+    Container {
+        Text { text: "Regular container works" }
+    }
+}

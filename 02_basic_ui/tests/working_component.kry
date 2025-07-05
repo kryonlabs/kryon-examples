@@ -1,0 +1,15 @@
+Define SimpleCard {
+    Properties {
+        title: String = "Default Title"
+    }
+    
+    Container {
+        Text { text: $title }
+    }
+}
+
+App {
+    SimpleCard {
+        title: "Hello World"
+    }
+}

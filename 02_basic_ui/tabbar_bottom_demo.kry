@@ -1,0 +1,43 @@
+# TabBar Bottom Position Demo
+# Demonstrates TabBar component with bottom navigation layout
+
+@include "widgets/tabbar.kry"
+
+style "app_container" {
+    background_color: "#191919FF"
+    text_color: "#FFFFFFFF"
+    layout: column start
+}
+
+style "content_area" {
+    background_color: "#1E1E1EFF"
+    text_color: "#FFFFFFFF"
+    layout: grow
+    text_alignment: center
+}
+
+App {
+    window_width: 800
+    window_height: 600
+    window_title: "TabBar Bottom Demo"
+    style: "app_container"
+
+    # Main content area
+    Container {
+        style: "content_area"
+        
+        Text {
+            text: "Main Content Area\n\nTabBar is positioned at the bottom like mobile navigation"
+            text_alignment: center
+        }
+    }
+
+    # Bottom navigation TabBar
+    TabBar {
+        position: "bottom"
+    }
+}
+
+@script "lua" {
+    create_tabbar_buttons("bottom_nav", "Home,Search,Favorites,Profile", "bottom")
+}

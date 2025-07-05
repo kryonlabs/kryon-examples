@@ -1,0 +1,11 @@
+Define MyWidget {
+    Container {
+        Text { text: "Widget content" }
+    }
+}
+
+App {
+    Container {
+        Text { text: "Regular app content" }
+    }
+}

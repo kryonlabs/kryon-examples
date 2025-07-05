@@ -1,0 +1,15 @@
+Define TestComponent {
+    Properties {
+        color: String = "red"
+    }
+    
+    Container {
+        Text { text: "Color is $color" }
+    }
+}
+
+App {
+    TestComponent {
+        color: "blue"
+    }
+}

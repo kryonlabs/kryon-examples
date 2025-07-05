@@ -1,0 +1,10 @@
+Define SimpleWidget {
+    Container {
+        Text { text: "Hello from SimpleWidget" }
+    }
+}
+
+App {
+    SimpleWidget {
+    }
+}
