@@ -58,11 +58,12 @@ style "tabbar_container_left" {
     border_width: 1
     border_color: "#444444FF"
     width: 150
+    height: 600
 }
 
 style "tabbar_container_right" {
     background_color: "#2C2C2CFF"
-    layout: column start
+    layout: column start grow
     border_width: 1
     border_color: "#444444FF"
     width: 150
@@ -71,7 +72,7 @@ style "tabbar_container_right" {
 # Button alignment variations for vertical TabBars
 style "tabbar_container_left_center" {
     background_color: "#2C2C2CFF"
-    layout: column center
+    layout: column center grow
     border_width: 1
     border_color: "#444444FF"
     width: 150
@@ -79,7 +80,7 @@ style "tabbar_container_left_center" {
 
 style "tabbar_container_left_end" {
     background_color: "#2C2C2CFF"
-    layout: column end
+    layout: column end grow
     border_width: 1
     border_color: "#444444FF"
     width: 150
@@ -87,7 +88,7 @@ style "tabbar_container_left_end" {
 
 style "tabbar_container_right_center" {
     background_color: "#2C2C2CFF"
-    layout: column center
+    layout: column center grow
     border_width: 1
     border_color: "#444444FF"
     width: 150
@@ -95,7 +96,7 @@ style "tabbar_container_right_center" {
 
 style "tabbar_container_right_end" {
     background_color: "#2C2C2CFF"
-    layout: column end
+    layout: column end grow
     border_width: 1
     border_color: "#444444FF"
     width: 150
@@ -150,9 +151,9 @@ style "tab_button_left" {
     text_color: "#CCCCCCFF"
     text_alignment: center
     border_width: 0
-    width: 120
+    width: 150
     height: 45
-    margin: 5
+    margin: 0
     padding: 8
     
     &:hover {
@@ -170,9 +171,9 @@ style "tab_button_right" {
     text_color: "#CCCCCCFF"
     text_alignment: center
     border_width: 0
-    width: 120
+    width: 150
     height: 45
-    margin: 5
+    margin: 0
     padding: 8
     
     &:hover {
