@@ -6,7 +6,7 @@ style "appstyle" {
 style "containerstyle" {
     border_width: 1
     background_color: "#191970FF"
-    border_color: "#00FFFFFF"
+    border_color: "#0099FFFF"
     layout: center
 }
 

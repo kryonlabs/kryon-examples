@@ -1,0 +1,77 @@
+style "header_style" {
+    background_color: "#002244FF"
+    text_color: "#FFFFFF"
+    text_alignment: center
+    border_width: 1
+    border_color: "#00AAFFFF"
+}
+
+style "content_style" {
+    background_color: "#F0F0F0FF"
+    text_color: "#333333"
+    border_width: 1
+    border_color: "#CCCCCC"
+}
+
+style "footer_style" {
+    background_color: "#444444FF"
+    text_color: "#AAAAAA"
+    text_alignment: center
+}
+
+Container {
+    pos_x: 10
+    pos_y: 10
+    width: 780
+    height: 580
+    
+    Container {
+        pos_x: 0
+        pos_y: 0
+        width: 780
+        height: 80
+        style: "header_style"
+        
+        Text {
+            text: "Standalone Complex Layout"
+            font_size: 24
+            text_alignment: center
+        }
+    }
+    
+    Container {
+        pos_x: 0
+        pos_y: 90
+        width: 780
+        height: 400
+        style: "content_style"
+        
+        Text {
+            text: "This is a complex layout rendered without an App wrapper."
+            font_size: 16
+            pos_x: 20
+            pos_y: 20
+        }
+        
+        Text {
+            text: "Multiple containers and text elements work perfectly!"
+            font_size: 14
+            pos_x: 20
+            pos_y: 60
+        }
+    }
+    
+    Container {
+        pos_x: 0
+        pos_y: 500
+        width: 780
+        height: 60
+        style: "footer_style"
+        
+        Text {
+            text: "Auto-generated App wrapper makes this possible"
+            font_size: 12
+            text_alignment: center
+        }
+    }
+}

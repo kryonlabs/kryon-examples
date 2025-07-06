@@ -186,89 +186,82 @@ style "tab_button_right" {
     }
 }
 
-# Content area styles for tab panels - overlapping layout
+# Content area styles for tab panels
 style "tab_content" {
     background_color: "#1E1E1EFF"
     text_color: "#FFFFFFFF"
     text_alignment: center
-    pos_x: 0
-    pos_y: 0
-    width: 720
-    height: 500
-}
-
-style "tab_content_hidden" {
-    background_color: "#1E1E1EFF"
-    text_color: "#FFFFFFFF"
     layout: grow
-    text_alignment: center
-    pos_x: -9999
 }
 
 # TabBar widget script logic
 @script "lua" {
-    function tabbar_init()
-        print("TabBar widget initialized")
+function tabbar_init()
+    print("TabBar widget initialized")
+end
+
+_global_content_ids = {}
+
+function switch_tab(tab_id)
+    local tab_buttons = {"tab_home", "tab_profile", "tab_settings"}
+    for _, button_id in ipairs(tab_buttons) do
+        local button = getElementById(button_id)
+        if button then
+            button:setChecked(false)
+        end
     end
     
-    _global_content_ids = {}
+    local clicked_tab = getElementById(tab_id)
+    if clicked_tab then
+        clicked_tab:setChecked(true)
+    end
     
-    function switch_tab(tab_id)
-        local tab_buttons = {"tab_home", "tab_profile", "tab_settings"}
-        for _, button_id in ipairs(tab_buttons) do
-            local button = getElementById(button_id)
-            if button then
-                button:setChecked(false)
-            end
-        end
-        
-        local clicked_tab = getElementById(tab_id)
-        if clicked_tab then
-            clicked_tab:setChecked(true)
-        end
-        
-        if _global_content_ids and #_global_content_ids > 0 then
-            for _, content_id in ipairs(_global_content_ids) do
-                local content = getElementById(content_id)
-                if content then
-                    content:setVisible(false)
-                end
-            end
-        end
-        
-        local content_mapping = {
-            tab_home = "home_content",
-            tab_profile = "profile_content", 
-            tab_settings = "settings_content"
-        }
-        
-        local target_content = content_mapping[tab_id]
-        if target_content then
-            local content = getElementById(target_content)
+    if _global_content_ids and #_global_content_ids > 0 then
+        for _, content_id in ipairs(_global_content_ids) do
+            local content = getElementById(content_id)
             if content then
-                content:setVisible(true)
+                content:setVisible(false)
+                print("Hiding content: " .. content_id)
             end
         end
     end
     
-    function setup_tab_handlers(tab_ids, content_ids)
-        _global_content_ids = content_ids
-        if #content_ids > 0 then
-            switch_tab("tab_home")
+    local content_mapping = {
+        tab_home = "home_content",
+        tab_profile = "profile_content", 
+        tab_settings = "settings_content"
+    }
+    
+    local target_content = content_mapping[tab_id]
+    if target_content then
+        local content = getElementById(target_content)
+        if content then
+            content:setVisible(true)
+            print("Showing content: " .. target_content)
+        else
+            print("ERROR: Could not find content element: " .. target_content)
         end
+    else
+        print("ERROR: No content mapping for tab: " .. tab_id)
     end
-    
-    function tab_home_clicked()
-        switch_tab("tab_home")
-    end
-    
-    function tab_profile_clicked()
-        switch_tab("tab_profile")
-    end
-    
-    function tab_settings_clicked()
-        switch_tab("tab_settings")
-    end
-    
-    tabbar_init()
+end
+
+function setup_tab_handlers(tab_ids, content_ids)
+    _global_content_ids = content_ids
+    print("TabBar initialized with " .. tostring(#content_ids) .. " content panels")
+end
+
+function tab_home_clicked()
+    switch_tab("tab_home")
+end
+
+function tab_profile_clicked()
+    switch_tab("tab_profile")
+end
+
+function tab_settings_clicked()
+    switch_tab("tab_settings")
+end
+
+tabbar_init()
 }
