@@ -8,7 +8,9 @@ App {
     background_color: "#F8F9FAFF"
     
     Container {
-        layout: column start
+        display: flex
+        flex_direction: column
+        align_items: start
         padding: 30
         gap: 25
         
@@ -22,7 +24,9 @@ App {
         
         # Column Layouts
         Container {
-            layout: column start
+            display: flex
+            flex_direction: column
+            align_items: start
             background_color: "#FFFFFFFF"
             border_radius: 8
             padding: 20
@@ -36,12 +40,16 @@ App {
             }
             
             Container {
-                layout: row start
+                display: flex
+                flex_direction: row
+                align_items: start
                 gap: 20
                 
                 // Column Start
                 Container {
-                    layout: column start
+                    display: flex
+                    flex_direction: column
+                    align_items: start
                     background_color: "#E3F2FDFF"
                     border_radius: 6
                     padding: 15
@@ -81,7 +89,9 @@ App {
                 
                 // Column Center
                 Container {
-                    layout: column center
+                    display: flex
+                    flex_direction: column
+                    align_items: center
                     background_color: "#E8F5E8FF"
                     border_radius: 6
                     padding: 15
@@ -121,7 +131,9 @@ App {
                 
                 // Column End
                 Container {
-                    layout: column end
+                    display: flex
+                    flex_direction: column
+                    align_items: end
                     background_color: "#FFF3E0FF"
                     border_radius: 6
                     padding: 15
@@ -163,7 +175,9 @@ App {
         
         // Row Layouts
         Container {
-            layout: column start
+            display: flex
+            flex_direction: column
+            align_items: start
             background_color: "#FFFFFFFF"
             border_radius: 8
             padding: 20
@@ -177,12 +191,16 @@ App {
             }
             
             Container {
-                layout: column start
+                display: flex
+                flex_direction: column
+                align_items: start
                 gap: 15
                 
                 // Row Start
                 Container {
-                    layout: column start
+                    display: flex
+                    flex_direction: column
+                    align_items: start
                     background_color: "#FCE4ECFF"
                     border_radius: 6
                     padding: 15
@@ -196,7 +214,9 @@ App {
                     }
                     
                     Container {
-                        layout: row start
+                        display: flex
+                        flex_direction: row
+                        align_items: start
                         gap: 8
                         
                         Container {
@@ -224,7 +244,9 @@ App {
                 
                 // Row Center
                 Container {
-                    layout: column start
+                    display: flex
+                    flex_direction: column
+                    align_items: start
                     background_color: "#F3E5F5FF"
                     border_radius: 6
                     padding: 15
@@ -238,7 +260,9 @@ App {
                     }
                     
                     Container {
-                        layout: row center
+                        display: flex
+                        flex_direction: row
+                        align_items: center
                         width: 600
                         gap: 8
                         
@@ -267,7 +291,9 @@ App {
                 
                 // Row End
                 Container {
-                    layout: column start
+                    display: flex
+                    flex_direction: column
+                    align_items: start
                     background_color: "#FFEBEEEFF"
                     border_radius: 6
                     padding: 15
@@ -281,7 +307,9 @@ App {
                     }
                     
                     Container {
-                        layout: row end
+                        display: flex
+                        flex_direction: row
+                        align_items: end
                         width: 600
                         gap: 8
                         
@@ -312,7 +340,9 @@ App {
         
         // Spacing and Gaps
         Container {
-            layout: column start
+            display: flex
+            flex_direction: column
+            align_items: start
             background_color: "#FFFFFFFF"
             border_radius: 8
             padding: 20
@@ -326,11 +356,15 @@ App {
             }
             
             Container {
-                layout: row start
+                display: flex
+                flex_direction: row
+                align_items: start
                 gap: 20
                 
                 Container {
-                    layout: column start
+                    display: flex
+                    flex_direction: column
+                    align_items: start
                     background_color: "#F5F5F5FF"
                     border_radius: 6
                     padding: 15
@@ -365,7 +399,9 @@ App {
                 }
                 
                 Container {
-                    layout: column start
+                    display: flex
+                    flex_direction: column
+                    align_items: start
                     background_color: "#F5F5F5FF"
                     border_radius: 6
                     padding: 15
@@ -400,7 +436,9 @@ App {
                 }
                 
                 Container {
-                    layout: column start
+                    display: flex
+                    flex_direction: column
+                    align_items: start
                     background_color: "#F5F5F5FF"
                     border_radius: 6
                     padding: 15

@@ -1,13 +1,17 @@
 style "app_base" {
     background_color: "#191919FF"
     text_color: "#FFFFFFFF"
-    layout: column start
+    display: flex
+    flex_direction: column
+    align_items: start
 }
 
 style "tab_bar_container" {
     background_color: "#2C2C2CFF"
     height: 50
-    layout: row start
+    display: flex
+    flex_direction: row
+    align_items: start
     border_width: 1
     border_color: "#444444FF"
 }
@@ -17,7 +21,7 @@ style "tab_button" {
     text_color: "#CCCCCCFF"
     text_alignment: center
     border_width: 0
-    layout: grow
+    flex_grow: 1
     height: 50
     
     &:hover {
@@ -32,7 +36,10 @@ style "tab_button" {
 style "content_area" {
     background_color: "#1E1E1EFF"
     text_color: "#FFFFFFFF"
-    layout: grow
+    flex_grow: 1
+    display: flex
+    align_items: center
+    justify_content: center
     text_alignment: center
 }
 

@@ -6,13 +6,15 @@
 style "app_container" {
     background_color: "#191919FF"
     text_color: "#FFFFFFFF"
-    layout: row start
+    display: flex
+    flex_direction: row
+    align_items: start
 }
 
 style "content_area" {
     background_color: "#1E1E1EFF"
     text_color: "#FFFFFFFF"
-    layout: absolute
+    position: absolute
     text_alignment: center
     width: 750
     height: 600
@@ -25,21 +27,41 @@ App {
     style: "app_container"
 
     # Left sidebar TabBar
-    TabBar {
-        position: "left"
+    Container {
+        id: "tabbar_container"
+        style: "tabbar_container_left"
+        
+        Button {
+            id: "tab_home"
+            text: "Home"
+            style: "tab_button_left"
+            checked: true
+            onClick: "tab_home_clicked"
+        }
+        
+        Button {
+            id: "tab_profile"
+            text: "Profile"
+            style: "tab_button_left"
+            onClick: "tab_profile_clicked"
+        }
+        
+        Button {
+            id: "tab_settings"
+            text: "Settings"
+            style: "tab_button_left"
+            onClick: "tab_settings_clicked"
+        }
     }
 
     # Main content area
     Container {
         style: "content_area"
         
-        # Tab content panels with absolute positioning
+        # Tab content panels with overlay positioning
         Container {
             id: "home_content"
-            style: "tab_content"
-            layout: absolute
-            pos_x: 0
-            pos_y: 0
+            style: "tab_content_overlay"
             
             Text {
                 text: "Home Page\n\nWelcome to the home section!\nThis content is displayed when the Home tab is active."
@@ -49,10 +71,7 @@ App {
         
         Container {
             id: "profile_content"
-            style: "tab_content"
-            layout: absolute
-            pos_x: 0
-            pos_y: 0
+            style: "tab_content_overlay"
             
             Text {
                 text: "Profile Page\n\nUser profile information goes here.\nThis content shows when Profile tab is selected."
@@ -62,10 +81,7 @@ App {
         
         Container {
             id: "settings_content"
-            style: "tab_content"
-            layout: absolute
-            pos_x: 0
-            pos_y: 0
+            style: "tab_content_overlay"
             
             Text {
                 text: "Settings Page\n\nApplication settings and preferences.\nThis content appears when Settings tab is clicked."
@@ -73,17 +89,4 @@ App {
             }
         }
     }
-}
-
-@script "lua" {
-    -- Initialize tab system with content panels
-    function init_demo()
-        setup_tab_handlers(
-            {"tab_home", "tab_profile", "tab_settings"},
-            {"home_content", "profile_content", "settings_content"}
-        )
-    end
-    
-    -- Call initialization
-    init_demo()
 }

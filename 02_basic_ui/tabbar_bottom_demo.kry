@@ -1,18 +1,20 @@
 # TabBar Bottom Position Demo  
-# Demonstrates TabBar component with bottom navigation layout
+# Fixed version with proper element ordering and widget usage
 
 @include "widgets/tabbar.kry"
 
 style "app_container" {
     background_color: "#191919FF"
     text_color: "#FFFFFFFF"
-    layout: column start
+    display: flex
+    flex_direction: column
+    align_items: start
 }
 
-style "content_area" {
+style "content_wrapper" {
     background_color: "#1E1E1EFF"
     text_color: "#FFFFFFFF"
-    layout: absolute
+    position: absolute
     text_alignment: center
     width: 900
     height: 550
@@ -24,18 +26,14 @@ App {
     window_title: "TabBar Bottom Demo"
     style: "app_container"
 
-    # Main content area with switchable content
+    # Content area FIRST (takes up available space)
     Container {
-        style: "content_area"
+        style: "content_wrapper"
         
-        # Tab content panels with absolute positioning (all stacked at same position)
+        # Tab content panels with overlay positioning
         Container {
             id: "home_content"
-            style: "tab_content"
-            layout: absolute
-            pos_x: 0
-            pos_y: 0
-            visible: true
+            style: "tab_content_overlay"
             
             Text {
                 text: "Home Page\n\nWelcome to the home section!\nThis content is displayed when the Home tab is active."
@@ -45,11 +43,7 @@ App {
         
         Container {
             id: "profile_content"
-            style: "tab_content"
-            layout: absolute
-            pos_x: 0
-            pos_y: 0
-            visible: false
+            style: "tab_content_overlay"
             
             Text {
                 text: "Profile Page\n\nUser profile information goes here.\nThis content shows when Profile tab is selected."
@@ -59,11 +53,7 @@ App {
         
         Container {
             id: "settings_content"
-            style: "tab_content"
-            layout: absolute
-            pos_x: 0
-            pos_y: 0
-            visible: false
+            style: "tab_content_overlay"
             
             Text {
                 text: "Settings Page\n\nApplication settings and preferences.\nThis content appears when Settings tab is clicked."
@@ -72,21 +62,8 @@ App {
         }
     }
 
-    # Bottom navigation using TabBar widget
+    # TabBar widget LAST (appears at bottom due to column layout)
     TabBar {
         position: "bottom"
     }
-}
-
-@script "lua" {
-    -- Initialize tab system with content panels
-    function init_demo()
-        setup_tab_handlers(
-            {"tab_home", "tab_profile", "tab_settings"},
-            {"home_content", "profile_content", "settings_content"}
-        )
-    end
-    
-    -- Call initialization
-    init_demo()
 }

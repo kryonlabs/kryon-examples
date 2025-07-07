@@ -7,7 +7,10 @@ style "containerstyle" {
     border_width: 1
     background_color: "#191970FF"
     border_color: "#0099FFFF"
-    layout: center
+    display: flex
+    flex_direction: column
+    align_items: center
+    justify_content: center
 }
 
 App {

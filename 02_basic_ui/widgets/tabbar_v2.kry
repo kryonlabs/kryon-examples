@@ -1,5 +1,5 @@
-# TabBar Component
-# Reusable tab bar component with Define syntax and custom properties
+# TabBar Component V2
+# Fixed version with proper structure for bottom/top placement
 
 Define TabBar {
     Properties {
@@ -46,9 +46,7 @@ style "tabbar_container_top" {
 
 style "tabbar_container_bottom" {
     background_color: "#2C2C2CFF"
-    display: flex
-    flex_direction: row
-    justify_content: center
+    layout: row center
     border_width: 1
     border_color: "#444444FF"
     height: 50
@@ -60,45 +58,12 @@ style "tabbar_container_left" {
     border_width: 1
     border_color: "#444444FF"
     width: 150
-    height: 600
+    height: 100%
 }
 
 style "tabbar_container_right" {
     background_color: "#2C2C2CFF"
     layout: column start grow
-    border_width: 1
-    border_color: "#444444FF"
-    width: 150
-}
-
-# Button alignment variations for vertical TabBars
-style "tabbar_container_left_center" {
-    background_color: "#2C2C2CFF"
-    layout: column center grow
-    border_width: 1
-    border_color: "#444444FF"
-    width: 150
-}
-
-style "tabbar_container_left_end" {
-    background_color: "#2C2C2CFF"
-    layout: column end grow
-    border_width: 1
-    border_color: "#444444FF"
-    width: 150
-}
-
-style "tabbar_container_right_center" {
-    background_color: "#2C2C2CFF"
-    layout: column center grow
-    border_width: 1
-    border_color: "#444444FF"
-    width: 150
-}
-
-style "tabbar_container_right_end" {
-    background_color: "#2C2C2CFF"
-    layout: column end grow
     border_width: 1
     border_color: "#444444FF"
     width: 150
@@ -132,7 +97,7 @@ style "tab_button_bottom" {
     text_color: "#CCCCCCFF"
     text_alignment: center
     border_width: 0
-    flex_grow: 1
+    layout: grow
     height: 50
     min_width: 80
     padding: 10
@@ -189,11 +154,11 @@ style "tab_button_right" {
 }
 
 # Content area styles for tab panels
-style "tab_content" {
+style "tab_content_wrapper" {
     background_color: "#1E1E1EFF"
     text_color: "#FFFFFFFF"
+    layout: absolute
     text_alignment: center
-    layout: grow
 }
 
 # Overlay content style for overlapping panels
@@ -201,7 +166,7 @@ style "tab_content_overlay" {
     background_color: "#1E1E1EFF"
     text_color: "#FFFFFFFF"
     text_alignment: center
-    position: absolute
+    layout: absolute
     pos_x: 0
     pos_y: 0
     width: 100%

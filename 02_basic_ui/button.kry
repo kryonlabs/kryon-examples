@@ -15,7 +15,10 @@ App {
     window_title: "Interactive Button Demo"
     resizable: true
     keep_aspect_ratio: false 
-    layout: center
+    display: flex
+    flex_direction: column
+    align_items: center
+    justify_content: center
     style: "base"
 
     Button {

@@ -1,0 +1,201 @@
+# Modern Dropdown Example
+# Demonstrates Taffy layout with absolute positioning for dropdown overlay
+
+style "app_style" {
+    background_color: "#F5F5F5FF"
+    display: flex
+    flex_direction: column
+    align_items: center
+    justify_content: start
+    padding: 20
+}
+
+style "dropdown_container" {
+    position: relative
+    display: flex
+    flex_direction: column
+    background_color: "#FFFFFFFF"
+    border_width: 1
+    border_color: "#CCCCCCFF"
+    border_radius: 8
+    min_width: 200
+}
+
+style "dropdown_button" {
+    background_color: "#FFFFFFFF"
+    text_color: "#333333FF"
+    border_width: 1
+    border_color: "#CCCCCCFF"
+    border_radius: 6
+    padding: 12
+    text_alignment: left
+    height: 44
+    
+    &:hover {
+        background_color: "#F0F0F0FF"
+        border_color: "#999999FF"
+    }
+    
+    &:checked {
+        background_color: "#E6F3FFFF"
+        border_color: "#0066CCFF"
+    }
+}
+
+style "dropdown_menu" {
+    position: absolute
+    top: 46
+    left: 0
+    width: 100%
+    background_color: "#FFFFFFFF"
+    border_width: 1
+    border_color: "#CCCCCCFF"
+    border_radius: 6
+    display: flex
+    flex_direction: column
+    z_index: 100
+}
+
+style "dropdown_item" {
+    background_color: "#FFFFFFFF"
+    text_color: "#333333FF"
+    padding: 10
+    border_width: 0
+    text_alignment: left
+    height: 36
+    
+    &:hover {
+        background_color: "#E6F3FFFF"
+    }
+}
+
+style "result_text" {
+    background_color: "#E8F5E8FF"
+    text_color: "#2D5016FF"
+    border_width: 1
+    border_color: "#4CAF50FF"
+    border_radius: 4
+    padding: 16
+    margin: 20
+    text_alignment: center
+}
+
+@variables {
+    dropdown_open: false
+    selected_item: "Choose an option..."
+}
+
+@function "lua" toggleDropdown() {
+    local dropdownBtn = getElementById("dropdown_btn")
+    local dropdownMenu = getElementById("dropdown_menu")
+    
+    if dropdown_open then
+        dropdown_open = false
+        dropdownBtn:setChecked(false)
+        dropdownMenu:setVisible(false)
+        print("🔽 Dropdown closed")
+    else
+        dropdown_open = true
+        dropdownBtn:setChecked(true)
+        dropdownMenu:setVisible(true)
+        print("🔼 Dropdown opened")
+    end
+}
+
+@function "lua" selectOption1() {
+    selected_item = "📄 Documents"
+    local dropdownBtn = getElementById("dropdown_btn")
+    local dropdownMenu = getElementById("dropdown_menu")
+    local resultText = getElementById("result_text")
+    
+    dropdownBtn:setText("📄 Documents")
+    dropdownMenu:setVisible(false)
+    dropdownBtn:setChecked(false)
+    dropdown_open = false
+    
+    resultText:setText("You selected: Documents - Perfect for file management!")
+    print("📄 Selected: Documents")
+}
+
+@function "lua" selectOption2() {
+    selected_item = "📊 Analytics"
+    local dropdownBtn = getElementById("dropdown_btn")
+    local dropdownMenu = getElementById("dropdown_menu")
+    local resultText = getElementById("result_text")
+    
+    dropdownBtn:setText("📊 Analytics")
+    dropdownMenu:setVisible(false)
+    dropdownBtn:setChecked(false)
+    dropdown_open = false
+    
+    resultText:setText("You selected: Analytics - Great for data insights!")
+    print("📊 Selected: Analytics")
+}
+
+@function "lua" selectOption3() {
+    selected_item = "⚙️ Settings"
+    local dropdownBtn = getElementById("dropdown_btn")
+    local dropdownMenu = getElementById("dropdown_menu")
+    local resultText = getElementById("result_text")
+    
+    dropdownBtn:setText("⚙️ Settings")
+    dropdownMenu:setVisible(false)
+    dropdownBtn:setChecked(false)
+    dropdown_open = false
+    
+    resultText:setText("You selected: Settings - Configure your preferences!")
+    print("⚙️ Selected: Settings")
+}
+
+App {
+    window_width: 600
+    window_height: 400
+    window_title: "Dropdown Example - Taffy Layout"
+    resizable: true
+    style: "app_style"
+    
+    Container {
+        style: "dropdown_container"
+        id: "dropdown_wrapper"
+        
+        Button {
+            id: "dropdown_btn"
+            text: "Choose an option... ▼"
+            style: "dropdown_button"
+            onClick: "toggleDropdown"
+        }
+        
+        Container {
+            id: "dropdown_menu"
+            style: "dropdown_menu"
+            visible: false
+            
+            Button {
+                id: "option1"
+                text: "📄 Documents"
+                style: "dropdown_item"
+                onClick: "selectOption1"
+            }
+            
+            Button {
+                id: "option2"
+                text: "📊 Analytics"  
+                style: "dropdown_item"
+                onClick: "selectOption2"
+            }
+            
+            Button {
+                id: "option3"
+                text: "⚙️ Settings"
+                style: "dropdown_item"
+                onClick: "selectOption3"
+            }
+        }
+    }
+    
+    Text {
+        id: "result_text"
+        text: "Please select an option from the dropdown above"
+        style: "result_text"
+    }
+}
