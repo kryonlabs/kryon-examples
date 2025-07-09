@@ -1,5 +1,0 @@
-App {
-    Container {
-        Text { text: "Hello World" }
-    }
-}

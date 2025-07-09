@@ -1,7 +1,7 @@
 style "base" {
     background_color: "#191919FF"
-    text_color: "#FFFF00FF"
-    border_color: "#00FFFFFF"
+    text_color: "#FF9900FF"
+    border_color: "#00AAFFFF"
     border_width: 1
 }
 

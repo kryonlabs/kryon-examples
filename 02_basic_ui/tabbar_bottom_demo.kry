@@ -14,10 +14,9 @@ style "app_container" {
 style "content_wrapper" {
     background_color: "#1E1E1EFF"
     text_color: "#FFFFFFFF"
-    position: absolute
     text_alignment: center
-    width: 900
-    height: 550
+    flex_grow: 1
+    position: relative
 }
 
 App {

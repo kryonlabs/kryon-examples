@@ -14,10 +14,9 @@ style "app_container" {
 style "content_area" {
     background_color: "#1E1E1EFF"
     text_color: "#FFFFFFFF"
-    position: absolute
     text_alignment: center
-    width: 750
-    height: 600
+    flex_grow: 1
+    position: relative
 }
 
 App {
@@ -26,35 +25,12 @@ App {
     window_title: "TabBar Left Demo"
     style: "app_container"
 
-    # Left sidebar TabBar
-    Container {
-        id: "tabbar_container"
-        style: "tabbar_container_left"
-        
-        Button {
-            id: "tab_home"
-            text: "Home"
-            style: "tab_button_left"
-            checked: true
-            onClick: "tab_home_clicked"
-        }
-        
-        Button {
-            id: "tab_profile"
-            text: "Profile"
-            style: "tab_button_left"
-            onClick: "tab_profile_clicked"
-        }
-        
-        Button {
-            id: "tab_settings"
-            text: "Settings"
-            style: "tab_button_left"
-            onClick: "tab_settings_clicked"
-        }
+    # Left sidebar TabBar widget
+    TabBar {
+        position: "left"
     }
 
-    # Main content area
+    # Main content area (takes remaining space)
     Container {
         style: "content_area"
         
@@ -64,7 +40,7 @@ App {
             style: "tab_content_overlay"
             
             Text {
-                text: "Home Page\n\nWelcome to the home section!\nThis content is displayed when the Home tab is active."
+                text: "Hello\n\nWelcome to the home section!\nThis content is displayed when the Home tab is active."
                 text_alignment: center
             }
         }

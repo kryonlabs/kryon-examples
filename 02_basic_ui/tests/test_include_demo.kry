@@ -1,7 +1,0 @@
-# Test include demo
-@include "test_widget.kry"
-
-App {
-    window_title: "Test Include"
-    style: "test_style"
-}
