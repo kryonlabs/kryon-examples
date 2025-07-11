@@ -19,7 +19,6 @@ App {
             font_size: 24
             text_color: "#212529FF"
             text_alignment: center
-            margin_bottom: 15
         }
         
         # Column Layouts
@@ -36,7 +35,6 @@ App {
                 text: "Column Layouts"
                 font_size: 18
                 text_color: "#495057FF"
-                margin_bottom: 8
             }
             
             Container {
@@ -62,7 +60,6 @@ App {
                         font_size: 14
                         text_color: "#1976D2FF"
                         text_alignment: center
-                        margin_bottom: 5
                     }
                     
                     Container {
@@ -104,7 +101,6 @@ App {
                         font_size: 14
                         text_color: "#388E3CFF"
                         text_alignment: center
-                        margin_bottom: 5
                     }
                     
                     Container {
@@ -146,7 +142,6 @@ App {
                         font_size: 14
                         text_color: "#F57C00FF"
                         text_alignment: center
-                        margin_bottom: 5
                     }
                     
                     Container {
@@ -187,7 +182,6 @@ App {
                 text: "Row Layouts"
                 font_size: 18
                 text_color: "#495057FF"
-                margin_bottom: 8
             }
             
             Container {
@@ -210,7 +204,6 @@ App {
                         text: "row start"
                         font_size: 14
                         text_color: "#C2185BFF"
-                        margin_bottom: 5
                     }
                     
                     Container {
@@ -256,7 +249,6 @@ App {
                         text: "row center"
                         font_size: 14
                         text_color: "#7B1FA2FF"
-                        margin_bottom: 5
                     }
                     
                     Container {
@@ -294,7 +286,7 @@ App {
                     display: flex
                     flex_direction: column
                     align_items: start
-                    background_color: "#FFEBEEEFF"
+                    background_color: "#FFEBEEEF"
                     border_radius: 6
                     padding: 15
                     gap: 8
@@ -303,7 +295,6 @@ App {
                         text: "row end"
                         font_size: 14
                         text_color: "#D32F2FFF"
-                        margin_bottom: 5
                     }
                     
                     Container {
@@ -352,7 +343,6 @@ App {
                 text: "Spacing & Gaps"
                 font_size: 18
                 text_color: "#495057FF"
-                margin_bottom: 8
             }
             
             Container {
@@ -373,7 +363,6 @@ App {
                     Text {
                         text: "gap: 4"
                         font_size: 12
-                        margin_bottom: 5
                     }
                     
                     Container {
@@ -410,7 +399,6 @@ App {
                     Text {
                         text: "gap: 12"
                         font_size: 12
-                        margin_bottom: 5
                     }
                     
                     Container {
@@ -447,7 +435,6 @@ App {
                     Text {
                         text: "gap: 20"
                         font_size: 12
-                        margin_bottom: 5
                     }
                     
                     Container {

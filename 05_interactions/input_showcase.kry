@@ -1,0 +1,345 @@
+// Input Showcase - Demonstrates the unified Input element with different types
+App {
+    width: 800
+    height: 600
+    title: "Input Showcase"
+    
+    Container {
+        layout: column
+        align_items: center
+        padding: 20
+        gap: 20
+        
+        Text {
+            text: "Unified Input Element Showcase"
+            font_size: 24
+            font_weight: bold
+            margin_bottom: 30
+        }
+        
+        // Text Input Section
+        Container {
+            layout: column
+            gap: 10
+            width: 600
+            
+            Text {
+                text: "Text Inputs"
+                font_size: 18
+                font_weight: bold
+                margin_bottom: 10
+            }
+            
+            Input {
+                type: text
+                placeholder: "Enter your name"
+                width: 300
+                height: 40
+                background_color: #ffffff
+                border_width: 1
+                border_color: #cccccc
+                border_radius: 5
+                padding: 10
+            }
+            
+            Input {
+                type: email
+                placeholder: "Enter your email"
+                width: 300
+                height: 40
+                background_color: #ffffff
+                border_width: 1
+                border_color: #cccccc
+                border_radius: 5
+                padding: 10
+            }
+            
+            Input {
+                type: password
+                placeholder: "Enter your password"
+                width: 300
+                height: 40
+                background_color: #ffffff
+                border_width: 1
+                border_color: #cccccc
+                border_radius: 5
+                padding: 10
+            }
+            
+            Input {
+                type: number
+                placeholder: "Enter a number"
+                min: 0
+                max: 100
+                value: 42
+                width: 300
+                height: 40
+                background_color: #ffffff
+                border_width: 1
+                border_color: #cccccc
+                border_radius: 5
+                padding: 10
+            }
+        }
+        
+        // Checkbox Section
+        Container {
+            layout: column
+            gap: 10
+            width: 600
+            margin_top: 30
+            
+            Text {
+                text: "Checkboxes and Radio Buttons"
+                font_size: 18
+                font_weight: bold
+                margin_bottom: 10
+            }
+            
+            Container {
+                layout: row
+                gap: 20
+                
+                Input {
+                    type: checkbox
+                    text: "Accept Terms"
+                    checked: false
+                    background_color: #ffffff
+                    border_width: 1
+                    border_color: #cccccc
+                }
+                
+                Input {
+                    type: checkbox
+                    text: "Subscribe to Newsletter"
+                    checked: true
+                    background_color: #ffffff
+                    border_width: 1
+                    border_color: #cccccc
+                }
+            }
+            
+            Container {
+                layout: column
+                gap: 10
+                margin_top: 20
+                
+                Text {
+                    text: "Choose your favorite color:"
+                    font_size: 14
+                }
+                
+                Container {
+                    layout: column
+                    gap: 5
+                    
+                    Input {
+                        type: radio
+                        name: "color"
+                        value: "red"
+                        text: "Red"
+                        checked: true
+                        background_color: #ffffff
+                        border_width: 1
+                        border_color: #cccccc
+                    }
+                    
+                    Input {
+                        type: radio
+                        name: "color"
+                        value: "blue"
+                        text: "Blue"
+                        checked: false
+                        background_color: #ffffff
+                        border_width: 1
+                        border_color: #cccccc
+                    }
+                    
+                    Input {
+                        type: radio
+                        name: "color"
+                        value: "green"
+                        text: "Green"
+                        checked: false
+                        background_color: #ffffff
+                        border_width: 1
+                        border_color: #cccccc
+                    }
+                }
+            }
+        }
+        
+        // Range Slider Section
+        Container {
+            layout: column
+            gap: 10
+            width: 600
+            margin_top: 30
+            
+            Text {
+                text: "Range Sliders"
+                font_size: 18
+                font_weight: bold
+                margin_bottom: 10
+            }
+            
+            Container {
+                layout: column
+                gap: 15
+                
+                Container {
+                    layout: column
+                    gap: 5
+                    
+                    Text {
+                        text: "Volume: 75%"
+                        font_size: 14
+                    }
+                    
+                    Input {
+                        type: range
+                        min: 0
+                        max: 100
+                        value: 75
+                        width: 400
+                        height: 30
+                        background_color: #e0e0e0
+                        border_width: 1
+                        border_color: #cccccc
+                    }
+                }
+                
+                Container {
+                    layout: column
+                    gap: 5
+                    
+                    Text {
+                        text: "Temperature: 22°C"
+                        font_size: 14
+                    }
+                    
+                    Input {
+                        type: range
+                        min: 10
+                        max: 35
+                        value: 22
+                        width: 400
+                        height: 30
+                        background_color: #e0e0e0
+                        border_width: 1
+                        border_color: #cccccc
+                    }
+                }
+            }
+        }
+        
+        // Special Input Types Section
+        Container {
+            layout: column
+            gap: 10
+            width: 600
+            margin_top: 30
+            
+            Text {
+                text: "Special Input Types"
+                font_size: 18
+                font_weight: bold
+                margin_bottom: 10
+            }
+            
+            Container {
+                layout: row
+                gap: 20
+                
+                Input {
+                    type: date
+                    value: "2024-01-15"
+                    width: 180
+                    height: 40
+                    background_color: #ffffff
+                    border_width: 1
+                    border_color: #cccccc
+                    border_radius: 5
+                }
+                
+                Input {
+                    type: time
+                    value: "14:30"
+                    width: 120
+                    height: 40
+                    background_color: #ffffff
+                    border_width: 1
+                    border_color: #cccccc
+                    border_radius: 5
+                }
+                
+                Input {
+                    type: color
+                    value: "#3498db"
+                    width: 80
+                    height: 40
+                    background_color: #ffffff
+                    border_width: 1
+                    border_color: #cccccc
+                    border_radius: 5
+                }
+                
+                Input {
+                    type: url
+                    placeholder: "https://example.com"
+                    width: 250
+                    height: 40
+                    background_color: #ffffff
+                    border_width: 1
+                    border_color: #cccccc
+                    border_radius: 5
+                    padding: 10
+                }
+            }
+        }
+        
+        // File and Search Section
+        Container {
+            layout: column
+            gap: 10
+            width: 600
+            margin_top: 30
+            
+            Text {
+                text: "File and Search Inputs"
+                font_size: 18
+                font_weight: bold
+                margin_bottom: 10
+            }
+            
+            Container {
+                layout: column
+                gap: 15
+                
+                Input {
+                    type: file
+                    accept: ".jpg,.png,.gif"
+                    width: 400
+                    height: 40
+                    background_color: #ffffff
+                    border_width: 1
+                    border_color: #cccccc
+                    border_radius: 5
+                    padding: 10
+                }
+                
+                Input {
+                    type: search
+                    placeholder: "Search products..."
+                    width: 400
+                    height: 40
+                    background_color: #ffffff
+                    border_width: 1
+                    border_color: #cccccc
+                    border_radius: 5
+                    padding: 10
+                }
+            }
+        }
+    }
+}

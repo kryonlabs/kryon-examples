@@ -1,0 +1,336 @@
+// Contact Form - Practical example using unified Input elements
+App {
+    width: 500
+    height: 700
+    title: "Contact Form"
+    
+    Container {
+        layout: column
+        align_items: center
+        padding: 30
+        gap: 20
+        background_color: #f5f5f5
+        
+        Text {
+            text: "Contact Us"
+            font_size: 28
+            font_weight: bold
+            color: #2c3e50
+            margin_bottom: 20
+        }
+        
+        // Form Container
+        Container {
+            layout: column
+            gap: 15
+            width: 400
+            background_color: #ffffff
+            padding: 30
+            border_radius: 10
+            border_width: 1
+            border_color: #e0e0e0
+            
+            // Name Field
+            Container {
+                layout: column
+                gap: 5
+                
+                Text {
+                    text: "Full Name *"
+                    font_size: 14
+                    font_weight: bold
+                    color: #555555
+                }
+                
+                Input {
+                    type: text
+                    placeholder: "Enter your full name"
+                    required: true
+                    width: 100%
+                    height: 40
+                    background_color: #ffffff
+                    border_width: 2
+                    border_color: #ddd
+                    border_radius: 5
+                    padding: 12
+                    font_size: 14
+                }
+            }
+            
+            // Email Field
+            Container {
+                layout: column
+                gap: 5
+                
+                Text {
+                    text: "Email Address *"
+                    font_size: 14
+                    font_weight: bold
+                    color: #555555
+                }
+                
+                Input {
+                    type: email
+                    placeholder: "your.email@example.com"
+                    required: true
+                    width: 100%
+                    height: 40
+                    background_color: #ffffff
+                    border_width: 2
+                    border_color: #ddd
+                    border_radius: 5
+                    padding: 12
+                    font_size: 14
+                }
+            }
+            
+            // Phone Field
+            Container {
+                layout: column
+                gap: 5
+                
+                Text {
+                    text: "Phone Number"
+                    font_size: 14
+                    font_weight: bold
+                    color: #555555
+                }
+                
+                Input {
+                    type: tel
+                    placeholder: "+1 (555) 123-4567"
+                    width: 100%
+                    height: 40
+                    background_color: #ffffff
+                    border_width: 2
+                    border_color: #ddd
+                    border_radius: 5
+                    padding: 12
+                    font_size: 14
+                }
+            }
+            
+            // Subject Field
+            Container {
+                layout: column
+                gap: 5
+                
+                Text {
+                    text: "Subject"
+                    font_size: 14
+                    font_weight: bold
+                    color: #555555
+                }
+                
+                Input {
+                    type: text
+                    placeholder: "Brief description of your inquiry"
+                    width: 100%
+                    height: 40
+                    background_color: #ffffff
+                    border_width: 2
+                    border_color: #ddd
+                    border_radius: 5
+                    padding: 12
+                    font_size: 14
+                }
+            }
+            
+            // Priority Selection
+            Container {
+                layout: column
+                gap: 10
+                
+                Text {
+                    text: "Priority Level"
+                    font_size: 14
+                    font_weight: bold
+                    color: #555555
+                }
+                
+                Container {
+                    layout: row
+                    gap: 15
+                    
+                    Input {
+                        type: radio
+                        name: "priority"
+                        value: "low"
+                        text: "Low"
+                        checked: true
+                        background_color: #ffffff
+                        border_width: 2
+                        border_color: #ddd
+                    }
+                    
+                    Input {
+                        type: radio
+                        name: "priority"
+                        value: "medium"
+                        text: "Medium"
+                        background_color: #ffffff
+                        border_width: 2
+                        border_color: #ddd
+                    }
+                    
+                    Input {
+                        type: radio
+                        name: "priority"
+                        value: "high"
+                        text: "High"
+                        background_color: #ffffff
+                        border_width: 2
+                        border_color: #ddd
+                    }
+                }
+            }
+            
+            // Urgency Slider
+            Container {
+                layout: column
+                gap: 10
+                
+                Text {
+                    text: "Urgency Level: Medium"
+                    font_size: 14
+                    font_weight: bold
+                    color: #555555
+                }
+                
+                Input {
+                    type: range
+                    min: 1
+                    max: 10
+                    value: 5
+                    width: 100%
+                    height: 25
+                    background_color: #e8f4fd
+                    border_width: 1
+                    border_color: #3498db
+                    border_radius: 12
+                }
+            }
+            
+            // Preferences
+            Container {
+                layout: column
+                gap: 10
+                
+                Text {
+                    text: "Contact Preferences"
+                    font_size: 14
+                    font_weight: bold
+                    color: #555555
+                }
+                
+                Container {
+                    layout: column
+                    gap: 8
+                    
+                    Input {
+                        type: checkbox
+                        text: "Email updates about my inquiry"
+                        checked: true
+                        background_color: #ffffff
+                        border_width: 2
+                        border_color: #ddd
+                    }
+                    
+                    Input {
+                        type: checkbox
+                        text: "Newsletter subscription"
+                        checked: false
+                        background_color: #ffffff
+                        border_width: 2
+                        border_color: #ddd
+                    }
+                    
+                    Input {
+                        type: checkbox
+                        text: "SMS notifications (if urgent)"
+                        checked: false
+                        background_color: #ffffff
+                        border_width: 2
+                        border_color: #ddd
+                    }
+                }
+            }
+            
+            // Preferred Contact Time
+            Container {
+                layout: row
+                gap: 15
+                align_items: center
+                
+                Text {
+                    text: "Best time to contact:"
+                    font_size: 14
+                    font_weight: bold
+                    color: #555555
+                }
+                
+                Input {
+                    type: time
+                    value: "09:00"
+                    width: 100
+                    height: 35
+                    background_color: #ffffff
+                    border_width: 2
+                    border_color: #ddd
+                    border_radius: 5
+                    padding: 8
+                    font_size: 14
+                }
+                
+                Text {
+                    text: "to"
+                    font_size: 14
+                    color: #555555
+                }
+                
+                Input {
+                    type: time
+                    value: "17:00"
+                    width: 100
+                    height: 35
+                    background_color: #ffffff
+                    border_width: 2
+                    border_color: #ddd
+                    border_radius: 5
+                    padding: 8
+                    font_size: 14
+                }
+            }
+            
+            // Submit Button
+            Button {
+                text: "Send Message"
+                width: 100%
+                height: 45
+                background_color: #3498db
+                color: #ffffff
+                border_radius: 5
+                font_size: 16
+                font_weight: bold
+                margin_top: 20
+                cursor: pointer
+                
+                &:hover {
+                    background_color: #2980b9
+                }
+                
+                &:active {
+                    background_color: #21618c
+                }
+            }
+        }
+        
+        // Footer
+        Text {
+            text: "All fields marked with * are required"
+            font_size: 12
+            color: #7f8c8d
+            margin_top: 15
+        }
+    }
+}

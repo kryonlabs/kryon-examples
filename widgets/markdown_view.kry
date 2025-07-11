@@ -1,0 +1,78 @@
+# MarkdownView Widget
+# A reusable component for displaying markdown-style content
+
+style "markdown_container" {
+    background_color: "#FFFFFFFF"
+    padding: 20
+    border_radius: 8
+    border_width: 1
+    border_color: "#E0E0E0FF"
+    flex_grow: 1
+    display: flex
+    flex_direction: column
+    gap: 12
+}
+
+style "markdown_heading" {
+    font_size: 18
+    text_color: "#222222FF"
+}
+
+style "markdown_text" {
+    font_size: 14
+    text_color: "#444444FF"
+    line_height: 1.6
+    text_alignment: start
+}
+
+style "markdown_code" {
+    background_color: "#F5F5F5FF"
+    padding: 8
+    border_radius: 4
+    font_family: "monospace"
+    font_size: 12
+    text_color: "#D73A49FF"
+}
+
+Define MarkdownView {
+    Properties {
+        source: String = ""
+        content: String = "# Default Content\n\nThis is a MarkdownView component.\n\n## Features:\n- Styled text display\n- Clean layout\n- Responsive design"
+        title: String = "Markdown"
+    }
+    
+    Container {
+        style: "markdown_container"
+        
+        # Header
+        Text {
+            text: $title
+            style: "markdown_heading"
+        }
+        
+        # Content area
+        Container {
+            display: flex
+            flex_direction: column
+            flex_grow: 1
+            
+            Text {
+                text: $content
+                style: "markdown_text"
+            }
+        }
+        
+        # Footer info
+        Container {
+            display: flex
+            flex_direction: row
+            justify_content: end
+            
+            Text {
+                text: "Source: markdown"
+                font_size: 10
+                text_color: "#888888FF"
+            }
+        }
+    }
+}

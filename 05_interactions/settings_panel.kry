@@ -1,0 +1,513 @@
+// Settings Panel - Comprehensive example of unified Input elements in a settings interface
+App {
+    width: 700
+    height: 800
+    title: "Application Settings"
+    
+    Container {
+        layout: column
+        padding: 20
+        gap: 25
+        background_color: #f8f9fa
+        
+        // Header
+        Container {
+            layout: row
+            align_items: center
+            gap: 15
+            margin_bottom: 20
+            
+            Text {
+                text: "⚙️"
+                font_size: 32
+            }
+            
+            Text {
+                text: "Application Settings"
+                font_size: 24
+                font_weight: bold
+                color: #2c3e50
+            }
+        }
+        
+        // Account Settings Section
+        Container {
+            layout: column
+            gap: 15
+            background_color: #ffffff
+            padding: 20
+            border_radius: 8
+            border_width: 1
+            border_color: #e9ecef
+            
+            Text {
+                text: "Account Settings"
+                font_size: 18
+                font_weight: bold
+                color: #495057
+                margin_bottom: 10
+            }
+            
+            Container {
+                layout: row
+                gap: 20
+                
+                Container {
+                    layout: column
+                    gap: 8
+                    flex_grow: 1
+                    
+                    Text {
+                        text: "Username"
+                        font_size: 14
+                        color: #6c757d
+                    }
+                    
+                    Input {
+                        type: text
+                        value: "john_doe_2024"
+                        width: 100%
+                        height: 38
+                        background_color: #ffffff
+                        border_width: 1
+                        border_color: #ced4da
+                        border_radius: 4
+                        padding: 10
+                        font_size: 14
+                    }
+                }
+                
+                Container {
+                    layout: column
+                    gap: 8
+                    flex_grow: 1
+                    
+                    Text {
+                        text: "Email"
+                        font_size: 14
+                        color: #6c757d
+                    }
+                    
+                    Input {
+                        type: email
+                        value: "john.doe@example.com"
+                        width: 100%
+                        height: 38
+                        background_color: #ffffff
+                        border_width: 1
+                        border_color: #ced4da
+                        border_radius: 4
+                        padding: 10
+                        font_size: 14
+                    }
+                }
+            }
+        }
+        
+        // Appearance Settings Section
+        Container {
+            layout: column
+            gap: 15
+            background_color: #ffffff
+            padding: 20
+            border_radius: 8
+            border_width: 1
+            border_color: #e9ecef
+            
+            Text {
+                text: "Appearance"
+                font_size: 18
+                font_weight: bold
+                color: #495057
+                margin_bottom: 10
+            }
+            
+            Container {
+                layout: column
+                gap: 15
+                
+                // Theme Selection
+                Container {
+                    layout: column
+                    gap: 10
+                    
+                    Text {
+                        text: "Theme"
+                        font_size: 14
+                        color: #6c757d
+                    }
+                    
+                    Container {
+                        layout: row
+                        gap: 20
+                        
+                        Input {
+                            type: radio
+                            name: "theme"
+                            value: "light"
+                            text: "Light"
+                            checked: true
+                            background_color: #ffffff
+                            border_width: 1
+                            border_color: #ced4da
+                        }
+                        
+                        Input {
+                            type: radio
+                            name: "theme"
+                            value: "dark"
+                            text: "Dark"
+                            background_color: #ffffff
+                            border_width: 1
+                            border_color: #ced4da
+                        }
+                        
+                        Input {
+                            type: radio
+                            name: "theme"
+                            value: "auto"
+                            text: "Auto"
+                            background_color: #ffffff
+                            border_width: 1
+                            border_color: #ced4da
+                        }
+                    }
+                }
+                
+                // Font Size Slider
+                Container {
+                    layout: column
+                    gap: 10
+                    
+                    Text {
+                        text: "Font Size: 14px"
+                        font_size: 14
+                        color: #6c757d
+                    }
+                    
+                    Input {
+                        type: range
+                        min: 10
+                        max: 20
+                        value: 14
+                        width: 300
+                        height: 24
+                        background_color: #e9ecef
+                        border_width: 1
+                        border_color: #ced4da
+                        border_radius: 12
+                    }
+                }
+                
+                // Accent Color
+                Container {
+                    layout: row
+                    gap: 15
+                    align_items: center
+                    
+                    Text {
+                        text: "Accent Color:"
+                        font_size: 14
+                        color: #6c757d
+                    }
+                    
+                    Input {
+                        type: color
+                        value: "#007bff"
+                        width: 60
+                        height: 38
+                        background_color: #ffffff
+                        border_width: 1
+                        border_color: #ced4da
+                        border_radius: 4
+                    }
+                    
+                    Text {
+                        text: "#007bff"
+                        font_size: 12
+                        color: #6c757d
+                        font_family: monospace
+                    }
+                }
+            }
+        }
+        
+        // Notification Settings Section
+        Container {
+            layout: column
+            gap: 15
+            background_color: #ffffff
+            padding: 20
+            border_radius: 8
+            border_width: 1
+            border_color: #e9ecef
+            
+            Text {
+                text: "Notifications"
+                font_size: 18
+                font_weight: bold
+                color: #495057
+                margin_bottom: 10
+            }
+            
+            Container {
+                layout: column
+                gap: 12
+                
+                Input {
+                    type: checkbox
+                    text: "Enable desktop notifications"
+                    checked: true
+                    background_color: #ffffff
+                    border_width: 1
+                    border_color: #ced4da
+                }
+                
+                Input {
+                    type: checkbox
+                    text: "Email notifications for updates"
+                    checked: false
+                    background_color: #ffffff
+                    border_width: 1
+                    border_color: #ced4da
+                }
+                
+                Input {
+                    type: checkbox
+                    text: "Sound alerts"
+                    checked: true
+                    background_color: #ffffff
+                    border_width: 1
+                    border_color: #ced4da
+                }
+                
+                // Notification Volume
+                Container {
+                    layout: column
+                    gap: 8
+                    margin_top: 10
+                    
+                    Text {
+                        text: "Notification Volume: 65%"
+                        font_size: 14
+                        color: #6c757d
+                    }
+                    
+                    Input {
+                        type: range
+                        min: 0
+                        max: 100
+                        value: 65
+                        width: 250
+                        height: 24
+                        background_color: #e9ecef
+                        border_width: 1
+                        border_color: #ced4da
+                        border_radius: 12
+                    }
+                }
+            }
+        }
+        
+        // Privacy Settings Section
+        Container {
+            layout: column
+            gap: 15
+            background_color: #ffffff
+            padding: 20
+            border_radius: 8
+            border_width: 1
+            border_color: #e9ecef
+            
+            Text {
+                text: "Privacy & Security"
+                font_size: 18
+                font_weight: bold
+                color: #495057
+                margin_bottom: 10
+            }
+            
+            Container {
+                layout: column
+                gap: 15
+                
+                // Auto-lock timeout
+                Container {
+                    layout: row
+                    gap: 15
+                    align_items: center
+                    
+                    Text {
+                        text: "Auto-lock after:"
+                        font_size: 14
+                        color: #6c757d
+                        width: 120
+                    }
+                    
+                    Input {
+                        type: number
+                        value: 15
+                        min: 1
+                        max: 60
+                        width: 80
+                        height: 38
+                        background_color: #ffffff
+                        border_width: 1
+                        border_color: #ced4da
+                        border_radius: 4
+                        padding: 10
+                        font_size: 14
+                    }
+                    
+                    Text {
+                        text: "minutes"
+                        font_size: 14
+                        color: #6c757d
+                    }
+                }
+                
+                // Privacy checkboxes
+                Container {
+                    layout: column
+                    gap: 10
+                    
+                    Input {
+                        type: checkbox
+                        text: "Allow usage analytics"
+                        checked: false
+                        background_color: #ffffff
+                        border_width: 1
+                        border_color: #ced4da
+                    }
+                    
+                    Input {
+                        type: checkbox
+                        text: "Share crash reports"
+                        checked: true
+                        background_color: #ffffff
+                        border_width: 1
+                        border_color: #ced4da
+                    }
+                    
+                    Input {
+                        type: checkbox
+                        text: "Enable two-factor authentication"
+                        checked: true
+                        background_color: #ffffff
+                        border_width: 1
+                        border_color: #ced4da
+                    }
+                }
+            }
+        }
+        
+        // Advanced Settings Section
+        Container {
+            layout: column
+            gap: 15
+            background_color: #ffffff
+            padding: 20
+            border_radius: 8
+            border_width: 1
+            border_color: #e9ecef
+            
+            Text {
+                text: "Advanced"
+                font_size: 18
+                font_weight: bold
+                color: #495057
+                margin_bottom: 10
+            }
+            
+            Container {
+                layout: column
+                gap: 15
+                
+                // API Endpoint
+                Container {
+                    layout: column
+                    gap: 8
+                    
+                    Text {
+                        text: "API Endpoint URL"
+                        font_size: 14
+                        color: #6c757d
+                    }
+                    
+                    Input {
+                        type: url
+                        value: "https://api.example.com"
+                        placeholder: "https://api.example.com"
+                        width: 100%
+                        height: 38
+                        background_color: #ffffff
+                        border_width: 1
+                        border_color: #ced4da
+                        border_radius: 4
+                        padding: 10
+                        font_size: 14
+                    }
+                }
+                
+                // Debug Mode
+                Container {
+                    layout: row
+                    gap: 15
+                    align_items: center
+                    
+                    Input {
+                        type: checkbox
+                        text: "Enable debug mode"
+                        checked: false
+                        background_color: #ffffff
+                        border_width: 1
+                        border_color: #ced4da
+                    }
+                    
+                    Text {
+                        text: "(Requires restart)"
+                        font_size: 12
+                        color: #868e96
+                    }
+                }
+            }
+        }
+        
+        // Action Buttons
+        Container {
+            layout: row
+            gap: 15
+            justify_content: flex_end
+            margin_top: 20
+            
+            Button {
+                text: "Reset to Defaults"
+                width: 150
+                height: 40
+                background_color: #6c757d
+                color: #ffffff
+                border_radius: 4
+                font_size: 14
+                
+                &:hover {
+                    background_color: #5a6268
+                }
+            }
+            
+            Button {
+                text: "Save Changes"
+                width: 120
+                height: 40
+                background_color: #28a745
+                color: #ffffff
+                border_radius: 4
+                font_size: 14
+                font_weight: bold
+                
+                &:hover {
+                    background_color: #218838
+                }
+            }
+        }
+    }
+}

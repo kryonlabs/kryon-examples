@@ -8,7 +8,9 @@ App {
     background_color: "#F8F9FAFF"
     
     Container {
-        layout: column start
+        display: flex
+        flex_direction: column
+        align_items: start
         padding: 30
         gap: 25
         
@@ -17,12 +19,13 @@ App {
             font_size: 24
             text_color: "#212529FF"
             text_alignment: center
-            margin_bottom: 15
         }
         
         # Basic Button Styles
         Container {
-            layout: column start
+            display: flex
+            flex_direction: column
+            align_items: start
             background_color: "#FFFFFFFF"
             border_radius: 8
             padding: 20
@@ -32,11 +35,12 @@ App {
                 text: "Button Styles"
                 font_size: 18
                 text_color: "#495057FF"
-                margin_bottom: 8
             }
             
             Container {
-                layout: row start
+                display: flex
+                flex_direction: row
+                align_items: start
                 gap: 12
                 
                 Button {
@@ -75,7 +79,9 @@ App {
         
         // Button Sizes
         Container {
-            layout: column start
+            display: flex
+            flex_direction: column
+            align_items: start
             background_color: "#FFFFFFFF"
             border_radius: 8
             padding: 20
@@ -85,11 +91,12 @@ App {
                 text: "Button Sizes"
                 font_size: 18
                 text_color: "#495057FF"
-                margin_bottom: 8
             }
             
             Container {
-                layout: column start
+                display: flex
+            flex_direction: column
+            align_items: start
                 gap: 8
                 
                 Button {
@@ -132,7 +139,9 @@ App {
         
         // Interactive States
         Container {
-            layout: column start
+            display: flex
+            flex_direction: column
+            align_items: start
             background_color: "#FFFFFFFF"
             border_radius: 8
             padding: 20
@@ -142,11 +151,12 @@ App {
                 text: "Interactive States"
                 font_size: 18
                 text_color: "#495057FF"
-                margin_bottom: 8
             }
             
             Container {
-                layout: row start
+                display: flex
+                flex_direction: row
+                align_items: start
                 gap: 12
                 
                 Button {
@@ -155,12 +165,6 @@ App {
                     text_color: "#FFFFFFFF"
                     padding: 12
                     border_radius: 4
-                    
-                    :hover {
-                        background_color: "#0056B3FF"
-                        border_width: 2
-                        border_color: "#004085FF"
-                    }
                 }
                 
                 Button {
@@ -169,11 +173,6 @@ App {
                     text_color: "#FFFFFFFF"
                     padding: 12
                     border_radius: 4
-                    
-                    :active {
-                        background_color: "#1E7E34FF"
-                        padding: 10
-                    }
                 }
                 
                 Button {
@@ -182,18 +181,15 @@ App {
                     text_color: "#FFFFFFFF"
                     padding: 12
                     border_radius: 4
-                    
-                    :focus {
-                        border_width: 3
-                        border_color: "#007BFFFF"
-                    }
                 }
             }
         }
         
         // Outline Buttons
         Container {
-            layout: column start
+            display: flex
+            flex_direction: column
+            align_items: start
             background_color: "#FFFFFFFF"
             border_radius: 8
             padding: 20
@@ -203,63 +199,51 @@ App {
                 text: "Outline Buttons"
                 font_size: 18
                 text_color: "#495057FF"
-                margin_bottom: 8
             }
             
             Container {
-                layout: row start
+                display: flex
+                flex_direction: row
+                align_items: start
                 gap: 12
                 
                 Button {
                     text: "Primary Outline"
-                    background_color: "transparent"
+                    background_color: "#FFFFFF00"
                     text_color: "#007BFFFF"
                     border_width: 2
                     border_color: "#007BFFFF"
                     padding: 10
                     border_radius: 4
-                    
-                    :hover {
-                        background_color: "#007BFFFF"
-                        text_color: "#FFFFFFFF"
-                    }
                 }
                 
                 Button {
                     text: "Success Outline"
-                    background_color: "transparent"
+                    background_color: "#FFFFFF00"
                     text_color: "#28A745FF"
                     border_width: 2
                     border_color: "#28A745FF"
                     padding: 10
                     border_radius: 4
-                    
-                    :hover {
-                        background_color: "#28A745FF"
-                        text_color: "#FFFFFFFF"
-                    }
                 }
                 
                 Button {
                     text: "Danger Outline"
-                    background_color: "transparent"
+                    background_color: "#FFFFFF00"
                     text_color: "#DC3545FF"
                     border_width: 2
                     border_color: "#DC3545FF"
                     padding: 10
                     border_radius: 4
-                    
-                    :hover {
-                        background_color: "#DC3545FF"
-                        text_color: "#FFFFFFFF"
-                    }
                 }
             }
         }
         
         // Special Buttons
         Container {
-            layout: column start
+            display: flex
+            flex_direction: column
+            align_items: start
             background_color: "#FFFFFFFF"
             border_radius: 8
             padding: 20
@@ -269,11 +253,12 @@ App {
                 text: "Special Button Types"
                 font_size: 18
                 text_color: "#495057FF"
-                margin_bottom: 8
             }
             
             Container {
-                layout: row start
+                display: flex
+                flex_direction: row
+                align_items: start
                 gap: 12
                 
                 Button {
@@ -299,7 +284,6 @@ App {
                     padding: 12
                     border_radius: 4
                     border_width: 0
-                    box_shadow: "0 4px 8px rgba(0,0,0,0.1)"
                 }
             }
         }

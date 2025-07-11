@@ -3,7 +3,9 @@ App {
     window_height: 250
     window_title: "Kryon Image Viewer"
     resizable: false
-    layout: center
+    display: flex
+    align_items: center
+    justify_content: center
 
     Image {
         id: "mainLogo"
