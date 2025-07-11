@@ -1,0 +1,181 @@
+# Text Overflow and Wrapping Tests
+# Tests text overflow, wrapping, and line breaking behavior
+
+style "container" {
+    background_color: "#F5F5F5FF"
+    border: "2px solid #999999FF"
+    margin: 10
+    padding: 10
+}
+
+style "fixed_width" {
+    background_color: "#E3F2FDFF"
+    border: "1px solid #2196F3FF"
+    padding: 10
+    width: 200
+}
+
+style "overflow_hidden" {
+    background_color: "#FFF3E0FF"
+    border: "1px solid #FF9800FF"
+    padding: 10
+    width: 200
+    overflow: "hidden"
+}
+
+style "overflow_wrap" {
+    background_color: "#E8F5E8FF"
+    border: "1px solid #4CAF50FF"
+    padding: 10
+    width: 200
+    word_wrap: "break_word"
+}
+
+style "title" {
+    font_size: 18
+    font_weight: bold
+    color: "#333333FF"
+    margin: 10
+    text_alignment: center
+}
+
+style "subtitle" {
+    font_size: 14
+    font_weight: bold
+    color: "#666666FF"
+    margin: 5
+}
+
+App {
+    window_width: 800
+    window_height: 900
+    window_title: "Text Overflow and Wrapping Tests"
+    flex_direction: "column"
+    background_color: "#FFFFFFFF"
+    
+    Text { text: "Text Overflow and Wrapping Tests" style: "title" }
+    
+    # Short text that fits
+    Container {
+        style: "container"
+        flex_direction: "column"
+        
+        Text { text: "Short Text That Fits" style: "subtitle" }
+        Text { 
+            text: "This text fits within the container width."
+            style: "fixed_width"
+        }
+    }
+    
+    # Long text without wrapping
+    Container {
+        style: "container"
+        flex_direction: "column"
+        
+        Text { text: "Long Text Without Wrapping" style: "subtitle" }
+        Text { 
+            text: "This is a very long line of text that will exceed the container width and should demonstrate overflow behavior."
+            style: "fixed_width"
+        }
+    }
+    
+    # Long text with overflow hidden
+    Container {
+        style: "container"
+        flex_direction: "column"
+        
+        Text { text: "Long Text With Overflow Hidden" style: "subtitle" }
+        Text { 
+            text: "This is a very long line of text that will exceed the container width but should be clipped due to overflow hidden."
+            style: "overflow_hidden"
+        }
+    }
+    
+    # Long text with word wrapping
+    Container {
+        style: "container"
+        flex_direction: "column"
+        
+        Text { text: "Long Text With Word Wrapping" style: "subtitle" }
+        Text { 
+            text: "This is a very long line of text that will exceed the container width but should wrap to multiple lines automatically."
+            style: "overflow_wrap"
+        }
+    }
+    
+    # Text with line breaks
+    Container {
+        style: "container"
+        flex_direction: "column"
+        
+        Text { text: "Text With Manual Line Breaks" style: "subtitle" }
+        Text { 
+            text: "Line 1: First line of text\nLine 2: Second line of text\nLine 3: Third line of text"
+            style: "fixed_width"
+        }
+    }
+    
+    # Very long single word
+    Container {
+        style: "container"
+        flex_direction: "column"
+        
+        Text { text: "Very Long Single Word" style: "subtitle" }
+        Text { 
+            text: "Supercalifragilisticexpialidocious"
+            style: "fixed_width"
+        }
+    }
+    
+    # Very long single word with break
+    Container {
+        style: "container"
+        flex_direction: "column"
+        
+        Text { text: "Very Long Single Word With Break" style: "subtitle" }
+        Text { 
+            text: "Supercalifragilisticexpialidocious"
+            style: "overflow_wrap"
+        }
+    }
+    
+    # Mixed content with different alignments
+    Container {
+        style: "container"
+        flex_direction: "row"
+        justify_content: "space_between"
+        
+        Container {
+            flex_direction: "column"
+            
+            Text { text: "Left Aligned" style: "subtitle" }
+            Text { 
+                text: "This text is left aligned within its container."
+                style: "fixed_width"
+                text_alignment: "start"
+            }
+        }
+        
+        Container {
+            flex_direction: "column"
+            
+            Text { text: "Center Aligned" style: "subtitle" }
+            Text { 
+                text: "This text is center aligned within its container."
+                style: "fixed_width"
+                text_alignment: "center"
+            }
+        }
+        
+        Container {
+            flex_direction: "column"
+            
+            Text { text: "Right Aligned" style: "subtitle" }
+            Text { 
+                text: "This text is right aligned within its container."
+                style: "fixed_width"
+                text_alignment: "end"
+            }
+        }
+    }
+}

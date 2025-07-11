@@ -1,0 +1,101 @@
+# Comprehensive Flexbox Alignment Tests
+# Tests all combinations of justify_content and align_items
+
+style "container" {
+    background_color: "#F0F0F0FF"
+    border: "2px solid #000000FF"
+    margin: 10
+    padding: 10
+    width: 300
+    height: 150
+}
+
+style "item" {
+    background_color: "#4CAF50FF"
+    color: "#FFFFFFFF"
+    padding: 8
+    margin: 2
+    width: 60
+    height: 40
+    text_alignment: center
+    font_size: 12
+}
+
+style "title" {
+    font_size: 16
+    font_weight: bold
+    color: "#333333FF"
+    margin: 5
+    text_alignment: center
+}
+
+App {
+    window_width: 1000
+    window_height: 800
+    window_title: "Flexbox Alignment Tests"
+    flex_direction: "column"
+    background_color: "#FFFFFFFF"
+    
+    # Test flex-start justify_content with different align_items
+    Text { text: "Row Layout - justify_content Tests" style: "title" }
+    
+    Container {
+        flex_direction: "row"
+        justify_content: "flex_start"
+        align_items: "flex_start"
+        style: "container"
+        
+        Text { text: "A" style: "item" }
+        Text { text: "B" style: "item" }
+        Text { text: "C" style: "item" }
+        Text { text: "justify: start, align: start" font_size: 10 margin: 5 }
+    }
+    
+    Container {
+        flex_direction: "row"
+        justify_content: "center"
+        align_items: "center"
+        style: "container"
+        
+        Text { text: "A" style: "item" }
+        Text { text: "B" style: "item" }
+        Text { text: "C" style: "item" }
+        Text { text: "justify: center, align: center" font_size: 10 margin: 5 }
+    }
+    
+    Container {
+        flex_direction: "row"
+        justify_content: "flex_end"
+        align_items: "flex_end"
+        style: "container"
+        
+        Text { text: "A" style: "item" }
+        Text { text: "B" style: "item" }
+        Text { text: "C" style: "item" }
+        Text { text: "justify: end, align: end" font_size: 10 margin: 5 }
+    }
+    
+    Container {
+        flex_direction: "row"
+        justify_content: "space_between"
+        align_items: "center"
+        style: "container"
+        
+        Text { text: "A" style: "item" }
+        Text { text: "B" style: "item" }
+        Text { text: "C" style: "item" }
+        Text { text: "justify: space_between" font_size: 10 margin: 5 }
+    }
+    
+    Container {
+        flex_direction: "row"
+        justify_content: "space_around"
+        align_items: "center"
+        style: "container"
+        
+        Text { text: "A" style: "item" }
+        Text { text: "B" style: "item" }
+        Text { text: "C" style: "item" }
+        Text { text: "justify: space_around" font_size: 10 margin: 5 }
+    }
+}

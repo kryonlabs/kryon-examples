@@ -36,11 +36,15 @@ App {
     window_height: 300
     window_title: "Kryon Font Demo"
     resizable: false
-    layout: "column center"
+    flex_direction: "column"
+    justify_content: "center"
+    align_items: "center"
     background_color: "#1E1E1EFF"
     
     Container {
-        layout: "column center"
+        flex_direction: "column"
+    justify_content: "center"
+    align_items: "center"
         gap: 16
         
         # Title with custom font

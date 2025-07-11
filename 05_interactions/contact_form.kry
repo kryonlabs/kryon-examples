@@ -5,7 +5,7 @@ App {
     title: "Contact Form"
     
     Container {
-        layout: column
+        flex_direction: column
         align_items: center
         padding: 30
         gap: 20
@@ -21,7 +21,7 @@ App {
         
         // Form Container
         Container {
-            layout: column
+            flex_direction: column
             gap: 15
             width: 400
             background_color: #ffffff
@@ -32,7 +32,7 @@ App {
             
             // Name Field
             Container {
-                layout: column
+                flex_direction: column
                 gap: 5
                 
                 Text {
@@ -59,7 +59,7 @@ App {
             
             // Email Field
             Container {
-                layout: column
+                flex_direction: column
                 gap: 5
                 
                 Text {
@@ -86,7 +86,7 @@ App {
             
             // Phone Field
             Container {
-                layout: column
+                flex_direction: column
                 gap: 5
                 
                 Text {
@@ -112,7 +112,7 @@ App {
             
             // Subject Field
             Container {
-                layout: column
+                flex_direction: column
                 gap: 5
                 
                 Text {
@@ -138,7 +138,7 @@ App {
             
             // Priority Selection
             Container {
-                layout: column
+                flex_direction: column
                 gap: 10
                 
                 Text {
@@ -149,7 +149,7 @@ App {
                 }
                 
                 Container {
-                    layout: row
+                    flex_direction: row
                     gap: 15
                     
                     Input {
@@ -187,7 +187,7 @@ App {
             
             // Urgency Slider
             Container {
-                layout: column
+                flex_direction: column
                 gap: 10
                 
                 Text {
@@ -213,7 +213,7 @@ App {
             
             // Preferences
             Container {
-                layout: column
+                flex_direction: column
                 gap: 10
                 
                 Text {
@@ -224,7 +224,7 @@ App {
                 }
                 
                 Container {
-                    layout: column
+                    flex_direction: column
                     gap: 8
                     
                     Input {
@@ -258,7 +258,7 @@ App {
             
             // Preferred Contact Time
             Container {
-                layout: row
+                flex_direction: row
                 gap: 15
                 align_items: center
                 

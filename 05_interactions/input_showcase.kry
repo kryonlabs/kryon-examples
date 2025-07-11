@@ -5,7 +5,7 @@ App {
     title: "Input Showcase"
     
     Container {
-        layout: column
+        flex_direction: column
         align_items: center
         padding: 20
         gap: 20
@@ -19,7 +19,7 @@ App {
         
         // Text Input Section
         Container {
-            layout: column
+            flex_direction: column
             gap: 10
             width: 600
             
@@ -84,7 +84,7 @@ App {
         
         // Checkbox Section
         Container {
-            layout: column
+            flex_direction: column
             gap: 10
             width: 600
             margin_top: 30
@@ -97,7 +97,7 @@ App {
             }
             
             Container {
-                layout: row
+                flex_direction: row
                 gap: 20
                 
                 Input {
@@ -120,7 +120,7 @@ App {
             }
             
             Container {
-                layout: column
+                flex_direction: column
                 gap: 10
                 margin_top: 20
                 
@@ -130,7 +130,7 @@ App {
                 }
                 
                 Container {
-                    layout: column
+                    flex_direction: column
                     gap: 5
                     
                     Input {
@@ -171,7 +171,7 @@ App {
         
         // Range Slider Section
         Container {
-            layout: column
+            flex_direction: column
             gap: 10
             width: 600
             margin_top: 30
@@ -184,11 +184,11 @@ App {
             }
             
             Container {
-                layout: column
+                flex_direction: column
                 gap: 15
                 
                 Container {
-                    layout: column
+                    flex_direction: column
                     gap: 5
                     
                     Text {
@@ -210,7 +210,7 @@ App {
                 }
                 
                 Container {
-                    layout: column
+                    flex_direction: column
                     gap: 5
                     
                     Text {
@@ -235,7 +235,7 @@ App {
         
         // Special Input Types Section
         Container {
-            layout: column
+            flex_direction: column
             gap: 10
             width: 600
             margin_top: 30
@@ -248,7 +248,7 @@ App {
             }
             
             Container {
-                layout: row
+                flex_direction: row
                 gap: 20
                 
                 Input {
@@ -300,7 +300,7 @@ App {
         
         // File and Search Section
         Container {
-            layout: column
+            flex_direction: column
             gap: 10
             width: 600
             margin_top: 30
@@ -313,7 +313,7 @@ App {
             }
             
             Container {
-                layout: column
+                flex_direction: column
                 gap: 15
                 
                 Input {

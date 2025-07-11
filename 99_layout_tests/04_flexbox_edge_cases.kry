@@ -1,0 +1,243 @@
+# Flexbox Edge Cases and Complex Layout Tests
+# Tests problematic flexbox scenarios including the row-end issue
+
+style "debug_container" {
+    border: "2px solid #FF0000FF"
+    background_color: "#FFEBEEAA"
+    margin: 5
+    padding: 5
+}
+
+style "debug_item" {
+    background_color: "#2196F3FF"
+    color: "#FFFFFFFF"
+    border: "1px solid #0D47A1FF"
+    padding: 4
+    margin: 2
+    text_alignment: center
+    font_size: 10
+}
+
+style "title" {
+    font_size: 16
+    font_weight: bold
+    color: "#333333FF"
+    margin: 8
+    text_alignment: center
+}
+
+style "issue_label" {
+    font_size: 12
+    color: "#D32F2FFF"
+    margin: 3
+    font_weight: bold
+}
+
+App {
+    window_width: 1200
+    window_height: 800
+    window_title: "Flexbox Edge Cases and Issues"
+    flex_direction: "column"
+    background_color: "#FFFFFFFF"
+    
+    Text { text: "Flexbox Edge Cases and Layout Issues" style: "title" }
+    
+    # Test 1: Row-end alignment issue
+    Container {
+        flex_direction: "column"
+        margin: 10
+        
+        Text { text: "Issue: Row-end alignment not fully at end" style: "issue_label" }
+        
+        Container {
+            flex_direction: "row"
+            justify_content: "flex_end"
+            align_items: "center"
+            style: "debug_container"
+            width: 500
+            height: 80
+            
+            Text { text: "Item 1" style: "debug_item" width: 60 }
+            Text { text: "Item 2" style: "debug_item" width: 60 }
+            Text { text: "Item 3" style: "debug_item" width: 60 }
+        }
+        
+        Text { 
+            text: "Items should be aligned to the far right edge of the container"
+            font_size: 10
+            color: "#666666FF"
+            margin: 2
+        }
+    }
+    
+    # Test 2: Space distribution edge cases
+    Container {
+        flex_direction: "column"
+        margin: 10
+        
+        Text { text: "Space distribution with different item sizes" style: "issue_label" }
+        
+        Container {
+            flex_direction: "row"
+            justify_content: "space_between"
+            align_items: "center"
+            style: "debug_container"
+            width: 500
+            height: 80
+            
+            Text { text: "Small" style: "debug_item" width: 40 }
+            Text { text: "Medium Item" style: "debug_item" width: 80 }
+            Text { text: "Large Item Text" style: "debug_item" width: 120 }
+        }
+    }
+    
+    # Test 3: Nested flexbox containers
+    Container {
+        flex_direction: "column"
+        margin: 10
+        
+        Text { text: "Nested flexbox containers" style: "issue_label" }
+        
+        Container {
+            flex_direction: "row"
+            justify_content: "space_between"
+            style: "debug_container"
+            width: 500
+            height: 100
+            
+            Container {
+                flex_direction: "column"
+                justify_content: "center"
+                align_items: "center"
+                style: "debug_container"
+                width: 120
+                
+                Text { text: "Nested" style: "debug_item" }
+                Text { text: "Column" style: "debug_item" }
+            }
+            
+            Container {
+                flex_direction: "row"
+                justify_content: "flex_end"
+                align_items: "flex_end"
+                style: "debug_container"
+                width: 200
+                
+                Text { text: "A" style: "debug_item" }
+                Text { text: "B" style: "debug_item" }
+                Text { text: "C" style: "debug_item" }
+            }
+            
+            Text { text: "Single" style: "debug_item" width: 60 }
+        }
+    }
+    
+    # Test 4: Flex grow and shrink behavior
+    Container {
+        flex_direction: "column"
+        margin: 10
+        
+        Text { text: "Flex grow and shrink behavior" style: "issue_label" }
+        
+        Container {
+            flex_direction: "row"
+            style: "debug_container"
+            width: 500
+            height: 60
+            
+            Text { 
+                text: "Fixed"
+                style: "debug_item"
+                width: 80
+            }
+            Text { 
+                text: "Grow 1"
+                style: "debug_item"
+                flex_grow: 1
+            }
+            Text { 
+                text: "Grow 2"
+                style: "debug_item"
+                flex_grow: 2
+            }
+            Text { 
+                text: "Fixed"
+                style: "debug_item"
+                width: 80
+            }
+        }
+    }
+    
+    # Test 5: Column layout with height issues
+    Container {
+        flex_direction: "row"
+        margin: 10
+        justify_content: "space_around"
+        
+        Container {
+            flex_direction: "column"
+            style: "debug_container"
+            width: 200
+            height: 300
+            
+            Text { text: "Column: flex-start" style: "issue_label" }
+            Text { text: "Item 1" style: "debug_item" }
+            Text { text: "Item 2" style: "debug_item" }
+            Text { text: "Item 3" style: "debug_item" }
+        }
+        
+        Container {
+            flex_direction: "column"
+            justify_content: "center"
+            style: "debug_container"
+            width: 200
+            height: 300
+            
+            Text { text: "Column: center" style: "issue_label" }
+            Text { text: "Item 1" style: "debug_item" }
+            Text { text: "Item 2" style: "debug_item" }
+            Text { text: "Item 3" style: "debug_item" }
+        }
+        
+        Container {
+            flex_direction: "column"
+            justify_content: "flex_end"
+            style: "debug_container"
+            width: 200
+            height: 300
+            
+            Text { text: "Column: flex-end" style: "issue_label" }
+            Text { text: "Item 1" style: "debug_item" }
+            Text { text: "Item 2" style: "debug_item" }
+            Text { text: "Item 3" style: "debug_item" }
+        }
+    }
+    
+    # Test 6: Overflow and clipping
+    Container {
+        flex_direction: "column"
+        margin: 10
+        
+        Text { text: "Container overflow behavior" style: "issue_label" }
+        
+        Container {
+            flex_direction: "row"
+            style: "debug_container"
+            width: 300
+            height: 60
+            
+            Text { text: "Item 1" style: "debug_item" width: 100 }
+            Text { text: "Item 2" style: "debug_item" width: 100 }
+            Text { text: "Item 3" style: "debug_item" width: 100 }
+            Text { text: "Item 4" style: "debug_item" width: 100 }
+            Text { text: "Item 5" style: "debug_item" width: 100 }
+        }
+        
+        Text { 
+            text: "Items should wrap or overflow consistently"
+            font_size: 10
+            color: "#666666FF"
+            margin: 2
+        }
+    }
+}
