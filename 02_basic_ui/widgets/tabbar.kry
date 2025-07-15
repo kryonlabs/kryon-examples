@@ -9,12 +9,12 @@ Define TabBar {
     
     Container {
         id: "tabbar_container"
-        style: "tabbar_container_$position"
+        style: "tabbar_container_${position}"
         
         Button {
             id: "tab_home"
             text: "Home"
-            style: "tab_button_$position"
+            style: "tab_button_${position}"
             checked: true
             onClick: "tab_home_clicked"
         }
@@ -22,14 +22,14 @@ Define TabBar {
         Button {
             id: "tab_profile"
             text: "Profile"
-            style: "tab_button_$position"
+            style: "tab_button_${position}"
             onClick: "tab_profile_clicked"
         }
         
         Button {
             id: "tab_settings"
             text: "Settings"
-            style: "tab_button_$position"
+            style: "tab_button_${position}"
             onClick: "tab_settings_clicked"
         }
     }

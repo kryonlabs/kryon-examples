@@ -1,0 +1,191 @@
+# Range Input Example
+# Slider input with value display
+
+style "app_container" {
+    background_color: "#F5F5F5FF"
+    display: flex
+    flex_direction: column
+    align_items: center
+    justify_content: center
+    padding: 20
+}
+
+style "form_container" {
+    background_color: "#FFFFFFFF"
+    border_width: 1
+    border_color: "#DDDDDDFF"
+    border_radius: 8
+    padding: 30
+    width: 400
+}
+
+style "slider_section" {
+    margin: 20
+}
+
+style "slider_label" {
+    font_size: 14
+    text_color: "#333333FF"
+    margin_bottom: 10
+}
+
+style "value_display" {
+    font_size: 24
+    font_weight: bold
+    text_color: "#2196F3FF"
+    text_alignment: center
+    margin: 10 0
+}
+
+style "range_labels" {
+    display: flex
+    flex_direction: row
+    justify_content: space-between
+    font_size: 12
+    text_color: "#666666FF"
+    margin_top: 5
+}
+
+style "preview_box" {
+    background_color: "#E3F2FDFF"
+    border_width: 2
+    border_color: "#2196F3FF"
+    border_radius: 8
+    height: 100
+    margin_top: 20
+    display: flex
+    align_items: center
+    justify_content: center
+}
+
+App {
+    window_title: "Range Input Example"
+    window_width: 500
+    window_height: 500
+    
+    Container {
+        style: "app_container"
+        
+        Container {
+            style: "form_container"
+            
+            Container {
+                style: "slider_section"
+                
+                Text {
+                    text: "Adjust volume:"
+                    style: "slider_label"
+                }
+                
+                Text {
+                    id: "volume_display"
+                    text: "50%"
+                    style: "value_display"
+                }
+                
+                Input {
+                    id: "volume_slider"
+                    type: "range"
+                    min: 0
+                    max: 100
+                    value: "50"
+                    width: 340
+                    onChange: "update_volume"
+                }
+                
+                Container {
+                    style: "range_labels"
+                    
+                    Text { text: "0%" }
+                    Text { text: "50%" }
+                    Text { text: "100%" }
+                }
+            }
+            
+            Container {
+                style: "slider_section"
+                
+                Text {
+                    text: "Adjust brightness:"
+                    style: "slider_label"
+                }
+                
+                Input {
+                    id: "brightness_slider"
+                    type: "range"
+                    min: 0
+                    max: 100
+                    value: "75"
+                    width: 340
+                    onChange: "update_brightness"
+                }
+            }
+            
+            Container {
+                id: "preview_box"
+                style: "preview_box"
+                
+                Text {
+                    id: "preview_text"
+                    text: "Preview"
+                    font_size: 18
+                }
+            }
+        }
+    }
+}
+
+@script "lua" {
+function update_volume()
+    local slider = getElementById("volume_slider")
+    local display = getElementById("volume_display")
+    
+    if slider and display then
+        local value = tonumber(slider:getValue()) or 0
+        display:setText(value .. "%")
+        
+        -- Update visual feedback
+        if value == 0 then
+            display:setTextColor("#F44336FF")
+        elseif value < 30 then
+            display:setTextColor("#FF9800FF")
+        else
+            display:setTextColor("#2196F3FF")
+        end
+    end
+end
+
+function update_brightness()
+    local slider = getElementById("brightness_slider")
+    local preview = getElementById("preview_box")
+    local text = getElementById("preview_text")
+    
+    if slider and preview then
+        local value = tonumber(slider:getValue()) or 0
+        local brightness = value / 100
+        
+        -- Update preview box opacity/brightness
+        local alpha = math.floor(55 + (brightness * 200))
+        local color = string.format("#E3F2FD%02X", alpha)
+        preview:setBackgroundColor(color)
+        
+        -- Update text visibility
+        if text then
+            if value < 20 then
+                text:setText("Too Dark!")
+                text:setTextColor("#F44336FF")
+            elseif value > 90 then
+                text:setText("Too Bright!")
+                text:setTextColor("#FF9800FF")
+            else
+                text:setText("Preview")
+                text:setTextColor("#333333FF")
+            end
+        end
+    end
+end
+
+-- Initialize displays
+update_volume()
+update_brightness()
+}

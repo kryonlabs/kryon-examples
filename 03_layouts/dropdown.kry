@@ -15,10 +15,11 @@ style "dropdown_container" {
     display: flex
     flex_direction: column
     background_color: "#FFFFFFFF"
-    border_width: 1
-    border_color: "#CCCCCCFF"
+    border_width: 2
+    border_color: "#FF0000FF"
     border_radius: 8
-    min_width: 200
+    width: 250
+    padding: 10
 }
 
 style "dropdown_button" {
@@ -45,15 +46,15 @@ style "dropdown_button" {
 style "dropdown_menu" {
     position: absolute
     top: 46
-    left: 0
-    width: 100%
+    left: 10
+    width: 220
     background_color: "#FFFFFFFF"
-    border_width: 1
-    border_color: "#CCCCCCFF"
+    border_width: 2
+    border_color: "#0000FFFF"
     border_radius: 6
     display: flex
     flex_direction: column
-    z_index: 100
+    z_index: 9999
 }
 
 style "dropdown_item" {
@@ -78,6 +79,7 @@ style "result_text" {
     padding: 16
     margin: 20
     text_alignment: center
+    z_index: 1
 }
 
 @variables {
@@ -93,58 +95,58 @@ style "result_text" {
         dropdown_open = false
         dropdownBtn:setChecked(false)
         dropdownMenu:setVisible(false)
-        print("🔽 Dropdown closed")
+        print("Dropdown closed")
     else
         dropdown_open = true
         dropdownBtn:setChecked(true)
         dropdownMenu:setVisible(true)
-        print("🔼 Dropdown opened")
+        print("Dropdown opened")
     end
 }
 
 @function "lua" selectOption1() {
-    selected_item = "📄 Documents"
+    selected_item = "Documents"
     local dropdownBtn = getElementById("dropdown_btn")
     local dropdownMenu = getElementById("dropdown_menu")
     local resultText = getElementById("result_text")
     
-    dropdownBtn:setText("📄 Documents")
+    dropdownBtn:setText("Documents")
     dropdownMenu:setVisible(false)
     dropdownBtn:setChecked(false)
     dropdown_open = false
     
     resultText:setText("You selected: Documents - Perfect for file management!")
-    print("📄 Selected: Documents")
+    print("Selected: Documents")
 }
 
 @function "lua" selectOption2() {
-    selected_item = "📊 Analytics"
+    selected_item = "Analytics"
     local dropdownBtn = getElementById("dropdown_btn")
     local dropdownMenu = getElementById("dropdown_menu")
     local resultText = getElementById("result_text")
     
-    dropdownBtn:setText("📊 Analytics")
+    dropdownBtn:setText("Analytics")
     dropdownMenu:setVisible(false)
     dropdownBtn:setChecked(false)
     dropdown_open = false
     
     resultText:setText("You selected: Analytics - Great for data insights!")
-    print("📊 Selected: Analytics")
+    print("Selected: Analytics")
 }
 
 @function "lua" selectOption3() {
-    selected_item = "⚙️ Settings"
+    selected_item = "Settings"
     local dropdownBtn = getElementById("dropdown_btn")
     local dropdownMenu = getElementById("dropdown_menu")
     local resultText = getElementById("result_text")
     
-    dropdownBtn:setText("⚙️ Settings")
+    dropdownBtn:setText("Settings")
     dropdownMenu:setVisible(false)
     dropdownBtn:setChecked(false)
     dropdown_open = false
     
     resultText:setText("You selected: Settings - Configure your preferences!")
-    print("⚙️ Selected: Settings")
+    print("Selected: Settings")
 }
 
 App {
@@ -160,7 +162,7 @@ App {
         
         Button {
             id: "dropdown_btn"
-            text: "Choose an option... ▼"
+            text: "Choose an option..."
             style: "dropdown_button"
             onClick: "toggleDropdown"
         }
@@ -172,21 +174,21 @@ App {
             
             Button {
                 id: "option1"
-                text: "📄 Documents"
+                text: "Documents"
                 style: "dropdown_item"
                 onClick: "selectOption1"
             }
             
             Button {
                 id: "option2"
-                text: "📊 Analytics"  
+                text: "Analytics"  
                 style: "dropdown_item"
                 onClick: "selectOption2"
             }
             
             Button {
                 id: "option3"
-                text: "⚙️ Settings"
+                text: "Settings"
                 style: "dropdown_item"
                 onClick: "selectOption3"
             }

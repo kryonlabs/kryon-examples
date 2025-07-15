@@ -111,4 +111,36 @@ When creating examples, follow these patterns:
 4. **Comprehensive coverage** - Show all properties and states
 5. **Script integration** - Include Lua scripts for interactivity
 
+## 🔤 Variable Syntax
+
+KryonLabs uses different variable syntax depending on the context:
+
+- **Regular usage**: Use `$variable_name` (e.g., `text_color: $primary_color`)
+- **Inside string concatenation/functions**: Use `${variable_name}` (e.g., `style: "button_${position}"`)
+- **Component properties**: Use `${property_name}` inside Define blocks
+
+Example:
+```kry
+@variables {
+    primary_color: "#007BFF"
+    button_size: 60
+}
+
+style "my_button" {
+    background_color: $primary_color    # Regular usage
+    width: $button_size                 # Regular usage
+}
+
+Define MyComponent {
+    Properties {
+        position: String = "left"
+    }
+    
+    Button {
+        style: "button_${position}"     # String concatenation needs ${}
+        text: ${text}                   # Component property needs ${}
+    }
+}
+```
+
 Happy coding with KryonLabs! 🎉

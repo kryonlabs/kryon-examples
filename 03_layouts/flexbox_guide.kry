@@ -199,6 +199,7 @@ App {
                     border_radius: 6
                     padding: 15
                     gap: 8
+                    width: 630
                     
                     Text {
                         text: "row start"
@@ -209,20 +210,21 @@ App {
                     Container {
                         display: flex
                         flex_direction: row
-                        align_items: start
+                        align_items: center
+                        justify_content: start
                         gap: 8
                         
                         Container {
                             background_color: "#E91E63FF"
                             width: 50
-                            height: 40
+                            height: 30
                             border_radius: 4
                         }
                         
                         Container {
                             background_color: "#E91E63FF"
                             width: 70
-                            height: 40
+                            height: 50
                             border_radius: 4
                         }
                         
@@ -244,6 +246,7 @@ App {
                     border_radius: 6
                     padding: 15
                     gap: 8
+                    width: 630
                     
                     Text {
                         text: "row center"
@@ -255,20 +258,20 @@ App {
                         display: flex
                         flex_direction: row
                         align_items: center
-                        width: 600
+                        justify_content: center
                         gap: 8
                         
                         Container {
                             background_color: "#9C27B0FF"
                             width: 50
-                            height: 40
+                            height: 30
                             border_radius: 4
                         }
                         
                         Container {
                             background_color: "#9C27B0FF"
                             width: 70
-                            height: 40
+                            height: 50
                             border_radius: 4
                         }
                         
@@ -290,6 +293,7 @@ App {
                     border_radius: 6
                     padding: 15
                     gap: 8
+                    width: 630
                     
                     Text {
                         text: "row end"
@@ -300,21 +304,22 @@ App {
                     Container {
                         display: flex
                         flex_direction: row
-                        align_items: end
+                        align_items: center
+                        justify_content: end
                         width: 600
                         gap: 8
                         
                         Container {
                             background_color: "#F44336FF"
                             width: 50
-                            height: 40
+                            height: 30
                             border_radius: 4
                         }
                         
                         Container {
                             background_color: "#F44336FF"
                             width: 70
-                            height: 40
+                            height: 50
                             border_radius: 4
                         }
                         

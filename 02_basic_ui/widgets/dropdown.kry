@@ -1,0 +1,221 @@
+# Dropdown Widget
+# A reusable dropdown component with Define syntax and auto-discovery
+
+Define Dropdown {
+    Properties {
+        options: String = "Option 1,Option 2,Option 3"
+        selected_index: Number = 0
+        placeholder: String = "Select an option"
+        width: Number = 200
+        id_prefix: String = "dropdown"
+    }
+    
+    Container {
+        id: "${id_prefix}_container"
+        style: "dropdown_container"
+        width: $width
+        
+        # Dropdown button
+        Button {
+            id: "${id_prefix}_button"
+            text: $placeholder
+            style: "dropdown_button"
+            width: $width
+            onClick: "${id_prefix}_toggle"
+        }
+        
+        # Dropdown menu (options created dynamically using @for)
+        Container {
+            id: "${id_prefix}_menu"
+            style: "dropdown_menu"
+            width: $width
+            visible: false
+            
+            # Dynamic option buttons generated from options property
+            @for option in $options
+                Button {
+                    id: "${id_prefix}_option_${option_index}"
+                    text: $option
+                    style: "dropdown_option"
+                    onClick: "${id_prefix}_option_${option_index}_click"
+                }
+            @end
+        }
+    }
+    
+    # Component script functions with variable substitution
+    @function "lua" ${id_prefix}_toggle() {
+        print("Toggling dropdown: ${id_prefix}")
+        
+        local menu = getElementById("${id_prefix}_menu")
+        if menu then
+            local isVisible = menu:getVisible()
+            print("Current menu visibility: " .. tostring(isVisible))
+            local newVisibility = not isVisible
+            menu:setVisible(newVisibility)
+            print("Set menu visibility: " .. tostring(newVisibility))
+            
+            -- The individual options do not need manual visibility control
+            -- They should inherit from their parent menu container
+        else
+            print("ERROR: Could not find menu element: ${id_prefix}_menu")
+        end
+    }
+    
+    @function "lua" ${id_prefix}_option_1_click() {
+        print("Selected option 1 in dropdown: ${id_prefix}")
+        local button = getElementById("${id_prefix}_button")
+        local option = getElementById("${id_prefix}_option_1")
+        if button and option then 
+            button:setText(option:getText()) 
+        end
+        
+        local menu = getElementById("${id_prefix}_menu")
+        if menu then
+            menu:setVisible(false)
+        end
+    }
+    
+    @function "lua" ${id_prefix}_option_2_click() {
+        print("Selected option 2 in dropdown: ${id_prefix}")
+        local button = getElementById("${id_prefix}_button")
+        local option = getElementById("${id_prefix}_option_2")
+        if button and option then 
+            button:setText(option:getText()) 
+        end
+        
+        local menu = getElementById("${id_prefix}_menu")
+        if menu then
+            menu:setVisible(false)
+        end
+    }
+    
+    @function "lua" ${id_prefix}_option_3_click() {
+        print("Selected option 3 in dropdown: ${id_prefix}")
+        local button = getElementById("${id_prefix}_button")
+        local option = getElementById("${id_prefix}_option_3")
+        if button and option then 
+            button:setText(option:getText()) 
+        end
+        
+        local menu = getElementById("${id_prefix}_menu")
+        if menu then
+            menu:setVisible(false)
+        end
+    }
+    
+    @function "lua" ${id_prefix}_option_4_click() {
+        print("Selected option 4 in dropdown: ${id_prefix}")
+        local button = getElementById("${id_prefix}_button")
+        local option = getElementById("${id_prefix}_option_4")
+        if button and option then 
+            button:setText(option:getText()) 
+        end
+        
+        local menu = getElementById("${id_prefix}_menu")
+        if menu then
+            menu:setVisible(false)
+        end
+    }
+    
+    @function "lua" ${id_prefix}_option_5_click() {
+        print("Selected option 5 in dropdown: ${id_prefix}")
+        local button = getElementById("${id_prefix}_button")
+        local option = getElementById("${id_prefix}_option_5")
+        if button and option then 
+            button:setText(option:getText()) 
+        end
+        
+        local menu = getElementById("${id_prefix}_menu")
+        if menu then
+            menu:setVisible(false)
+        end
+    }
+}
+
+# Dropdown styles
+style "dropdown_container" {
+    display: flex
+    flex_direction: column
+    position: relative
+}
+
+style "dropdown_button" {
+    background_color: "#FFFFFFFF"
+    text_color: "#495057FF"
+    border_width: 2
+    border_color: "#DEE2E6FF"
+    border_radius: 8
+    padding: 12
+    text_alignment: center
+    font_size: 16
+    height: 48
+    font_weight: 500
+    
+    &:hover {
+        background_color: "#F8F9FAFF"
+        border_color: "#0D6EFDFF"
+        text_color: "#0D6EFDFF"
+    }
+    
+    &:active {
+        background_color: "#E9ECEFFF"
+        border_color: "#0A58CAFF"
+    }
+}
+
+style "dropdown_menu" {
+    background_color: "#FFFFFFFF"
+    border_width: 3
+    border_color: "#000000FF"
+    border_radius: 8
+    position: absolute
+    pos_x: 0
+    pos_y: 50
+    z_index: 1000
+    max_height: 150
+    height: 150
+    display: flex
+    flex_direction: column
+    padding: 8
+    box_shadow: "0 4px 6px rgba(0, 0, 0, 0.3)"
+    overflow: visible
+}
+
+style "dropdown_option" {
+    background_color: "#F8F9FAFF"
+    text_color: "#495057FF"
+    padding: 12
+    text_alignment: center
+    font_size: 15
+    border_width: 1
+    border_color: "#DEE2E6FF"
+    height: 40
+    font_weight: 400
+    margin: 2
+    
+    &:hover {
+        background_color: "#E9ECEFFF"
+        text_color: "#0D6EFDFF"
+    }
+    
+    &:active {
+        background_color: "#DEE2E6FF"
+    }
+}
+
+style "dropdown_option_selected" {
+    background_color: "#0D6EFDFF"
+    text_color: "#FFFFFFFF"
+    padding: 12
+    text_alignment: center
+    font_size: 15
+    border_width: 0
+    height: 40
+    font_weight: 500
+    
+    &:hover {
+        background_color: "#0B5ED7FF"
+    }
+}
+
