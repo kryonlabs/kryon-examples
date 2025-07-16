@@ -11,7 +11,9 @@ style "tab_bar_container" {
     height: 50
     display: flex
     flex_direction: row
-    align_items: start
+    align_items: stretch
+    justify_content: stretch
+    width: 100%
     border_width: 1
     border_color: "#444444FF"
 }
@@ -22,7 +24,9 @@ style "tab_button" {
     text_alignment: center
     border_width: 0
     flex_grow: 1
+    flex_basis: 0
     height: 50
+    min_width: 0
     
     &:hover {
         background_color: "#505050FF"

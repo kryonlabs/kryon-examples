@@ -65,6 +65,7 @@ style "tabbar_container_left" {
     border_color: "#444444FF"
     width: 150
     height: 600
+    z_index: 100
 }
 
 style "tabbar_container_right" {
@@ -212,9 +213,10 @@ style "tab_content_overlay" {
     background_color: "#1E1E1EFF"
     text_color: "#FFFFFFFF"
     text_alignment: center
-    position: absolute
-    pos_x: 0
-    pos_y: 0
+    position: relative
+    display: flex
+    justify_content: center
+    align_items: center
     width: 100%
     height: 100%
 }

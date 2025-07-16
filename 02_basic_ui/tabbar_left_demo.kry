@@ -9,6 +9,7 @@ style "app_container" {
     display: flex
     flex_direction: row
     align_items: start
+    justify_content: start
 }
 
 style "content_area" {
@@ -17,6 +18,9 @@ style "content_area" {
     text_alignment: center
     flex_grow: 1
     position: relative
+    display: flex
+    justify_content: center
+    align_items: center
 }
 
 App {

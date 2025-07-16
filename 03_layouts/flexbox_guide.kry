@@ -259,6 +259,7 @@ App {
                         flex_direction: row
                         align_items: center
                         justify_content: center
+                        width: 600
                         gap: 8
                         
                         Container {

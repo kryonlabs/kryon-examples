@@ -1,132 +1,71 @@
-# Dropdown Widget
-# A reusable dropdown component with Define syntax and auto-discovery
+# Dropdown Component (Simplified Syntax)
+# Reusable, encapsulated, and stateful.
 
 Define Dropdown {
-    Properties {
-        options: String = "Option 1,Option 2,Option 3"
-        selected_index: Number = 0
-        placeholder: String = "Select an option"
-        width: Number = 200
-        id_prefix: String = "dropdown"
-    }
+    # Public properties (can be passed from parent)
+    options = ["Option 1", "Option 2", "Option 3"]
+    selectedIndex = -1  # -1 means no selection
+    placeholder = "Select an option"
+    width = 200
+    onSelect = null     # Callback to notify parent of selection change
     
+    # Private properties (prefixed with underscore)
+    _isOpen = true
+    _currentText = "Select an option"
+
+    # The component's template
     Container {
-        id: "${id_prefix}_container"
+        id: "container"
         style: "dropdown_container"
         width: $width
-        
-        # Dropdown button
+
         Button {
-            id: "${id_prefix}_button"
-            text: $placeholder
+            id: "button"
+            text: $_currentText
             style: "dropdown_button"
             width: $width
-            onClick: "${id_prefix}_toggle"
+            onClick: "dropdown_toggle"
         }
-        
-        # Dropdown menu (options created dynamically using @for)
+
         Container {
-            id: "${id_prefix}_menu"
+            id: "menu"
             style: "dropdown_menu"
             width: $width
-            visible: false
-            
-            # Dynamic option buttons generated from options property
-            @for option in $options
+            visible: $_isOpen
+
+            @for option, index in $options
                 Button {
-                    id: "${id_prefix}_option_${option_index}"
+                    key: $index
                     text: $option
-                    style: "dropdown_option"
-                    onClick: "${id_prefix}_option_${option_index}_click"
+                    style: $selectedIndex == $index ? "dropdown_option_selected" : "dropdown_option"
+                    onClick: "dropdown_handleSelect"
                 }
             @end
         }
     }
-    
-    # Component script functions with variable substitution
-    @function "lua" ${id_prefix}_toggle() {
-        print("Toggling dropdown: ${id_prefix}")
-        
-        local menu = getElementById("${id_prefix}_menu")
+
+    # Component methods - @method, @func, and @function are aliases
+    @method "lua" dropdown_toggle() {
+        print("🔍 [DROPDOWN_DEBUG] dropdown_toggle called")
+        local menu = getElementById("menu")
         if menu then
+            print("🔍 [DROPDOWN_DEBUG] Found menu element")
             local isVisible = menu:getVisible()
-            print("Current menu visibility: " .. tostring(isVisible))
-            local newVisibility = not isVisible
-            menu:setVisible(newVisibility)
-            print("Set menu visibility: " .. tostring(newVisibility))
-            
-            -- The individual options do not need manual visibility control
-            -- They should inherit from their parent menu container
+            print("🔍 [DROPDOWN_DEBUG] Current visibility:", isVisible)
+            menu:setVisible(not isVisible)
+            print("🔍 [DROPDOWN_DEBUG] Set visibility to:", not isVisible)
         else
-            print("ERROR: Could not find menu element: ${id_prefix}_menu")
+            print("❌ [DROPDOWN_DEBUG] Menu element not found!")
         end
     }
-    
-    @function "lua" ${id_prefix}_option_1_click() {
-        print("Selected option 1 in dropdown: ${id_prefix}")
-        local button = getElementById("${id_prefix}_button")
-        local option = getElementById("${id_prefix}_option_1")
-        if button and option then 
-            button:setText(option:getText()) 
+
+    @func "lua" dropdown_handleSelect(index, option) {
+        local button = getElementById("button")
+        if button then
+            button:setText(option)
         end
         
-        local menu = getElementById("${id_prefix}_menu")
-        if menu then
-            menu:setVisible(false)
-        end
-    }
-    
-    @function "lua" ${id_prefix}_option_2_click() {
-        print("Selected option 2 in dropdown: ${id_prefix}")
-        local button = getElementById("${id_prefix}_button")
-        local option = getElementById("${id_prefix}_option_2")
-        if button and option then 
-            button:setText(option:getText()) 
-        end
-        
-        local menu = getElementById("${id_prefix}_menu")
-        if menu then
-            menu:setVisible(false)
-        end
-    }
-    
-    @function "lua" ${id_prefix}_option_3_click() {
-        print("Selected option 3 in dropdown: ${id_prefix}")
-        local button = getElementById("${id_prefix}_button")
-        local option = getElementById("${id_prefix}_option_3")
-        if button and option then 
-            button:setText(option:getText()) 
-        end
-        
-        local menu = getElementById("${id_prefix}_menu")
-        if menu then
-            menu:setVisible(false)
-        end
-    }
-    
-    @function "lua" ${id_prefix}_option_4_click() {
-        print("Selected option 4 in dropdown: ${id_prefix}")
-        local button = getElementById("${id_prefix}_button")
-        local option = getElementById("${id_prefix}_option_4")
-        if button and option then 
-            button:setText(option:getText()) 
-        end
-        
-        local menu = getElementById("${id_prefix}_menu")
-        if menu then
-            menu:setVisible(false)
-        end
-    }
-    
-    @function "lua" ${id_prefix}_option_5_click() {
-        print("Selected option 5 in dropdown: ${id_prefix}")
-        local button = getElementById("${id_prefix}_button")
-        local option = getElementById("${id_prefix}_option_5")
-        if button and option then 
-            button:setText(option:getText()) 
-        end
-        
-        local menu = getElementById("${id_prefix}_menu")
+        local menu = getElementById("menu")
         if menu then
             menu:setVisible(false)
         end
