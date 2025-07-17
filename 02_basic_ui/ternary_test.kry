@@ -1,0 +1,123 @@
+# Ternary Expression and Visibility Test
+# Testing if ternary expressions work with visibility control
+
+style "app_container" {
+    background_color: "#191919FF"
+    text_color: "#FFFFFFFF"
+    display: flex
+    flex_direction: column
+    align_items: center
+    justify_content: center
+    gap: 20
+    padding: 40
+}
+
+style "toggle_button" {
+    background_color: "#0066CCFF"
+    text_color: "#FFFFFFFF"
+    border_width: 0
+    border_radius: 8
+    padding: 15
+    font_size: 16
+    width: 200
+    height: 50
+    text_alignment: center
+    
+    &:hover {
+        background_color: "#0052A3FF"
+    }
+}
+
+style "test_container" {
+    background_color: "#FF0000FF"
+    text_color: "#FFFFFFFF"
+    border_width: 2
+    border_color: "#FFFFFFFF"
+    border_radius: 8
+    padding: 20
+    width: 300
+    height: 100
+    display: flex
+    align_items: center
+    justify_content: center
+}
+
+style "hidden_container" {
+    background_color: "#2C2C2CFF"
+    text_color: "#FFFFFFFF"
+    border_width: 2
+    border_color: "#0066CCFF"
+    border_radius: 8
+    padding: 20
+    width: 300
+    height: 100
+    display: flex
+    align_items: center
+    justify_content: center
+    visibility: hidden
+}
+
+@var isOpen = true
+
+App {
+    window_width: 600
+    window_height: 400
+    window_title: "Ternary Expression Test"
+    style: "app_container"
+    
+    Text {
+        text: "Ternary Expression Visibility Test"
+        font_size: 20
+        text_alignment: center
+    }
+    
+    Button {
+        id: "toggle_btn"
+        text: $isOpen ? "Hide Container" : "Show Container"
+        style: "toggle_button"
+        onClick: "toggle_visibility"
+    }
+    
+    # Container that should show/hide based on isOpen variable
+    Container {
+        id: "test_container"
+        style: $isOpen ? "test_container" : "hidden_container"
+        
+        Text {
+            text: "This container toggles visibility!"
+            text_alignment: center
+        }
+    }
+    
+    # Status text showing current state
+    Text {
+        id: "status_text"
+        text: $isOpen ? "Container is VISIBLE" : "Container is HIDDEN"
+        font_size: 14
+        text_color: $isOpen ? "#00FF00FF" : "#FF0000FF"
+        text_alignment: center
+    }
+}
+
+@script "lua" {
+function toggle_visibility()
+    print("🔍 Toggle visibility called")
+    
+    -- Get current isOpen value
+    local current_state = getVariable("isOpen")
+    print("🔍 Current isOpen state:", current_state)
+    
+    -- Toggle the state (convert string to boolean and back)
+    local new_state
+    if current_state == "true" then
+        new_state = "false"
+    else
+        new_state = "true"
+    end
+    
+    print("🔍 Setting isOpen to:", new_state)
+    setVariable("isOpen", new_state)
+    
+    print("🔍 Variable toggle complete - ternary expressions should now update automatically")
+end
+}

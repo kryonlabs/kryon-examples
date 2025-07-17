@@ -44,7 +44,7 @@ App {
             style: "tab_content_overlay"
             
             Text {
-                text: "Hello\n\nWelcome to the home section!\nThis content is displayed when the Home tab is active."
+                text: "Home Page\n\nWelcome to the home section!\nThis content is displayed when the Home tab is active."
                 text_alignment: center
             }
         }

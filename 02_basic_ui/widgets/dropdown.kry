@@ -10,7 +10,7 @@ Define Dropdown {
     onSelect = null     # Callback to notify parent of selection change
     
     # Private properties (prefixed with underscore)
-    _isOpen = true
+    _isOpen = false
     _currentText = "Select an option"
 
     # The component's template
@@ -37,7 +37,7 @@ Define Dropdown {
                 Button {
                     key: $index
                     text: $option
-                    style: $selectedIndex == $index ? "dropdown_option_selected" : "dropdown_option"
+                    style: "dropdown_option"
                     onClick: "dropdown_handleSelect"
                 }
             @end
@@ -59,15 +59,24 @@ Define Dropdown {
         end
     }
 
-    @func "lua" dropdown_handleSelect(index, option) {
+    @func "lua" dropdown_handleSelect() {
+        print("🔍 [DROPDOWN_DEBUG] dropdown_handleSelect called")
+        
+        -- For now, just hide the menu and set a test text
         local button = getElementById("button")
         if button then
-            button:setText(option)
+            button:setText("Selected Option")
+            print("🔍 [DROPDOWN_DEBUG] Set button text to 'Selected Option'")
+        else
+            print("❌ [DROPDOWN_DEBUG] Button element not found!")
         end
         
         local menu = getElementById("menu")
         if menu then
             menu:setVisible(false)
+            print("🔍 [DROPDOWN_DEBUG] Hidden menu")
+        else
+            print("❌ [DROPDOWN_DEBUG] Menu element not found!")
         end
     }
 }

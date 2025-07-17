@@ -1,5 +1,5 @@
 # TabBar Bottom Position Demo  
-# Fixed version with proper element ordering and widget usage
+# Simplified version with proper content centering
 
 @include "widgets/tabbar.kry"
 
@@ -8,15 +8,19 @@ style "app_container" {
     text_color: "#FFFFFFFF"
     display: flex
     flex_direction: column
-    align_items: start
+    width: 100%
+    height: 100%
 }
 
-style "content_wrapper" {
+style "content_area" {
     background_color: "#1E1E1EFF"
     text_color: "#FFFFFFFF"
-    text_alignment: center
     flex_grow: 1
     position: relative
+    display: flex
+    justify_content: center
+    align_items: center
+    width: 100%
 }
 
 App {
@@ -25,11 +29,11 @@ App {
     window_title: "TabBar Bottom Demo"
     style: "app_container"
 
-    # Content area FIRST (takes up available space)
+    # Content area - single container for all content
     Container {
-        style: "content_wrapper"
+        style: "content_area"
         
-        # Tab content panels with overlay positioning
+        # All tab content with absolute positioning
         Container {
             id: "home_content"
             style: "tab_content_overlay"
@@ -61,7 +65,7 @@ App {
         }
     }
 
-    # TabBar widget LAST (appears at bottom due to column layout)
+    # TabBar at bottom
     TabBar {
         position: "bottom"
     }

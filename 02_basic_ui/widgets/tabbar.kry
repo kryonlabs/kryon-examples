@@ -44,6 +44,7 @@ style "tabbar_container_top" {
     border_width: 1
     border_color: "#444444FF"
     height: 50
+    width: 100%
 }
 
 style "tabbar_container_bottom" {
@@ -54,6 +55,7 @@ style "tabbar_container_bottom" {
     border_width: 1
     border_color: "#444444FF"
     height: 50
+    width: 900
 }
 
 style "tabbar_container_left" {
@@ -213,12 +215,14 @@ style "tab_content_overlay" {
     background_color: "#1E1E1EFF"
     text_color: "#FFFFFFFF"
     text_alignment: center
-    position: relative
+    position: absolute
     display: flex
     justify_content: center
     align_items: center
-    width: 100%
-    height: 100%
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
 }
 
 # TabBar widget script logic
