@@ -67,15 +67,16 @@ App {
             text_color: "#FFFFFFFF"
         }
 
-        # This is the key element - NativeRendererView
-        NativeRendererView {
+        # This is the key element - EmbedView with native_renderer type
+        EmbedView {
             id: "native_view"
             style: "native_view"
-            backend: "raylib"
-            render_script: "render_raylib_scene"
+            type: "native_renderer"
+            source: "render_raylib_scene"
             config: {
-                vsync: true
-                target_fps: 60
+                "backend": "raylib",
+                "vsync": true,
+                "target_fps": 60
             }
         }
 

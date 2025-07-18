@@ -27,16 +27,19 @@ App {
         style: "container"
         
         Text {
-            text: "Native Raylib View Below:"
+            text: "Native Raylib View Below (via EmbedView):"
             font_size: 18
             text_color: "#FFFFFFFF"
         }
         
-        NativeRendererView {
+        EmbedView {
             id: "native_view"
             style: "native_view"
-            backend: "raylib"
-            render_script: "simple_render"
+            type: "native_renderer"
+            source: "simple_render"
+            config: {
+                "backend": "raylib"
+            }
         }
     }
 }

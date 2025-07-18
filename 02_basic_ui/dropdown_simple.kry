@@ -126,8 +126,15 @@ App {
         Container {
             style: "content_card"
             
-            Text { text: "Dropdown Demo", style: "app_title" }
-            Text { text: "A simple, stateful dropdown component", style: "app_subtitle" }
+            Text {
+                text: "Dropdown Demo"
+                style: "app_title"
+            }
+            
+            Text {
+                text: "A simple, stateful dropdown component"
+                style: "app_subtitle"
+            }
             
             Container {
                 id: "country_dropdown_container"
@@ -164,12 +171,12 @@ App {
 
 
 @function "lua" toggle_country_menu() {
-    $is_country_menu_open = not $is_country_menu_open
+    is_country_menu_open = not is_country_menu_open
 }
 
 @function "lua" select_country(index, option) {
-    $selected_country_text = option    
-    $is_country_menu_open = false
+    selected_country_text = option    
+    is_country_menu_open = false
     
     print("Country selected at index " .. tostring(index) .. ": " .. option)
 }

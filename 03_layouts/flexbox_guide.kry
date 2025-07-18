@@ -290,7 +290,7 @@ App {
                     display: flex
                     flex_direction: column
                     align_items: start
-                    background_color: "#FFEBEEEF"
+                    background_color: "#FFEBEEFF"
                     border_radius: 6
                     padding: 15
                     gap: 8

@@ -1,0 +1,222 @@
+# Ternary Expression Test for Dropdown
+# Testing conditional styling with ternary operators
+
+# Define global variables for state management
+@variables {
+    dropdown_open: false
+    selected_index: -1
+    options: ["Option A", "Option B", "Option C", "Option D"]
+    selected_text: "Select an option"
+}
+
+# Define styles
+style "app_container" {
+    background_color: "#f5f5f5"
+    display: flex
+    flex_direction: column
+    align_items: center
+    justify_content: center
+    padding: 40
+}
+
+style "dropdown_wrapper" {
+    position: relative
+    width: 300
+    margin: 20
+}
+
+style "dropdown_button" {
+    background_color: "#ffffff"
+    text_color: "#333333"
+    border_width: 2
+    border_color: "#cccccc"
+    border_radius: 8
+    padding: 12
+    text_alignment: left
+    width: 100%
+    cursor: pointer
+    
+    &:hover {
+        border_color: "#0066cc"
+        background_color: "#f0f0f0"
+    }
+    
+    &:checked {
+        border_color: "#0066cc"
+        background_color: "#e6f3ff"
+    }
+}
+
+style "dropdown_menu" {
+    position: absolute
+    top: 50
+    left: 0
+    width: 100%
+    background_color: "#ffffff"
+    border_width: 1
+    border_color: "#cccccc"
+    border_radius: 8
+    box_shadow: "0 4px 12px rgba(0, 0, 0, 0.15)"
+    display: flex
+    flex_direction: column
+    padding: 8
+    gap: 4
+    z_index: 1000
+}
+
+style "dropdown_option" {
+    background_color: "#ffffff"
+    text_color: "#333333"
+    padding: 10
+    border_radius: 4
+    text_alignment: left
+    cursor: pointer
+    border_width: 0
+    
+    &:hover {
+        background_color: "#e9ecef"
+    }
+}
+
+style "dropdown_option_selected" {
+    background_color: "#0066cc"
+    text_color: "#ffffff"
+    padding: 10
+    border_radius: 4
+    text_alignment: left
+    cursor: pointer
+    border_width: 0
+    font_weight: 600
+    
+    &:hover {
+        background_color: "#0052a3"
+    }
+}
+
+style "test_info" {
+    background_color: "#e8f5e8"
+    text_color: "#2d5016"
+    padding: 20
+    border_radius: 8
+    margin: 20
+    text_alignment: center
+    max_width: 400
+}
+
+style "test_title" {
+    font_size: 24
+    font_weight: 700
+    text_color: "#1a2b48"
+    margin_bottom: 10
+}
+
+# Script functions
+@function "lua" toggleDropdown() {
+    dropdown_open = not dropdown_open
+    local menu = getElementById("dropdown_menu")
+    local button = getElementById("dropdown_button")
+    
+    if menu then
+        menu:setVisible(dropdown_open)
+    end
+    
+    if button then
+        button:setChecked(dropdown_open)
+    end
+    
+    print("[DEBUG] Dropdown toggled: ", dropdown_open)
+}
+
+@function "lua" selectOption(index, text) {
+    selected_index = index
+    selected_text = text
+    dropdown_open = false
+    
+    local menu = getElementById("dropdown_menu")
+    local button = getElementById("dropdown_button")
+    local info = getElementById("info_text")
+    
+    if menu then
+        menu:setVisible(false)
+    end
+    
+    if button then
+        button:setText(text)
+        button:setChecked(false)
+    end
+    
+    if info then
+        info:setText("Selected: " .. text .. " (index: " .. tostring(index) .. ")")
+    end
+    
+    print("[DEBUG] Selected option:", text, "at index:", index)
+}
+
+# Application UI
+App {
+    window_width: 600
+    window_height: 400
+    window_title: "Ternary Expression Dropdown Test"
+    resizable: true
+    style: "app_container"
+    
+    Text {
+        text: "Ternary Expression Test"
+        style: "test_title"
+    }
+    
+    Container {
+        id: "dropdown_wrapper"
+        style: "dropdown_wrapper"
+        
+        Button {
+            id: "dropdown_button"
+            text: $selected_text
+            style: "dropdown_button"
+            onClick: "toggleDropdown"
+        }
+        
+        Container {
+            id: "dropdown_menu"
+            style: "dropdown_menu"
+            visible: $dropdown_open
+            
+            # Test 1: Simple ternary in @for loop
+            @for option, index in $options
+                Button {
+                    key: $index
+                    text: $option
+                    # Ternary expression for conditional styling
+                    style: $selected_index == $index ? "dropdown_option_selected" : "dropdown_option"
+                    onClick: selectOption($index, $option)
+                }
+            @end
+        }
+    }
+    
+    Text {
+        id: "info_text"
+        text: "No selection made"
+        style: "test_info"
+    }
+    
+    # Additional test cases for ternary expressions
+    Container {
+        display: flex
+        flex_direction: column
+        gap: 10
+        margin_top: 20
+        
+        # Test 2: Ternary in text content
+        Text {
+            text: $selected_index >= 0 ? "You have made a selection" : "Please select an option"
+            style: "test_info"
+        }
+        
+        # Test 3: Ternary with string comparison
+        Text {
+            text: $selected_text == "Option B" ? "You selected B!" : "Not B"
+            style: "test_info"
+        }
+    }
+}
